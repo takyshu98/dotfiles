@@ -10,14 +10,17 @@ export LANG=ja_JP.UTF-8
 # key bindings
 bindkey -e
 
+# set completions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 # set colors
 autoload -Uz colors
 colors
 
 # set prompt
-autoload -U promptinit
-promptinit
-prompt bart
+#autoload -U promptinit
+#promptinit
+#prompt bart
 
 # attach tmux session
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }

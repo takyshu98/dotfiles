@@ -160,8 +160,12 @@
 ;; ¥の代わりに\を入力
 (global-set-key [?¥] [?\\])
 
-;; C-tでウィンドウを切り替える。初期値はtranspose-chars
+;; C-tでウィンドウを切り替える
+;; 初期値はtranspose-chars
 (define-key global-map (kbd "C-t") 'other-window)
+
+;; C-kを行削除に切り替える
+;(define-key global-map (kbd "C-k") ' kill-whole-line)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; パッケージ管理
