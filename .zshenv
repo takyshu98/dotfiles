@@ -7,4 +7,4 @@
 export LANG=ja_JP.UTF-8
 
 # set path
-export PATH="/usr/local/bin:/usr/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/sbin:$HOME/bin:$PATH"
