@@ -2,6 +2,15 @@
 
 set -eu
 
+# install homebrew
+if ! command -v brew >/dev/null 2>&1; then
+  # https://brew.sh/
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo
+fi
+brew bundle
+echo
+
 SHRPATH=$HOME/share
 mkdir -p "$SHRPATH"
 mkdir -p ~/bin
@@ -25,18 +34,9 @@ cd "$DOTPATH"
 # TODO
 # Mac basic settings
 # scripts/configure.sh
-echo
+# echo
 
 scripts/deploy.sh
-echo
-
-# install homebrew
-if ! command -v brew >/dev/null 2>&1; then
-  # https://brew.sh/
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  echo
-fi
-brew bundle
 echo
 
 scripts/initialize.sh
