@@ -4,84 +4,83 @@
 #        This file is read after .zshenv file is read.
 #
 
-# set locale
-export LANG=ja_JP.UTF-8
+# initialize zplug
+source ~/.zplug/init.zsh
 
-# key bindings
-bindkey -e
+# add plugins by zplug
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "mafredri/zsh-async"
+zplug "sindresorhus/pure"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-history-substring-search" # seems to not working in any work around
+zplug "zsh-users/zsh-completions"
+zplug "chrissicool/zsh-256color"
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "plugins/git", from:oh-my-zsh
 
-# set completions
+# zplug check returns true if all packages are installed
+# Therefore, when it returns false, run zplug install
+if ! zplug check; then
+    zplug install
+fi
+
+# source plugins and add commands to the PATH
+zplug load #--verbose
+
+# // compinit is activate in zplug //
+
+# set zsh completions
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# set colors
-autoload -Uz colors
-colors
+# set zsh options
+setopt hist_ignore_dups
+unsetopt PROMPT_SP # work around for Hyper first line percent sign issue#2144
 
-# set prompt
-#autoload -U promptinit
-#promptinit
-#prompt bart
+# set zsh emacs key bindings
+bindkey -e
 
-# attach tmux session
-function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
-function is_osx() { [[ $OSTYPE == darwin* ]]; }
-function is_screen_running() { [ ! -z "$STY" ]; }
-function is_tmux_runnning() { [ ! -z "$TMUX" ]; }
-function is_screen_or_tmux_running() { is_screen_running || is_tmux_runnning; }
-function shell_has_started_interactively() { [ ! -z "$PS1" ]; }
-function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
+# set alias
+alias ls='ls -FG'
 
-function tmux_automatically_attach_session()
-{
-    if is_screen_or_tmux_running; then
-	! is_exists 'tmux' && return 1
+# set shell variables
+# PROMPT=$'[%~]\n%m{%n}%% '
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-	if is_tmux_runnning; then
-	    echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
-	    echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
-	    echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
-	    echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
-	    echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
-	elif is_screen_running; then
-	    echo "This is on screen."
-	fi
-    else
-	if shell_has_started_interactively && ! is_ssh_running; then
-	    if ! is_exists 'tmux'; then
-		echo 'Error: tmux command not found' 2>&1
-		return 1
-	    fi
+# set shell functions
+# work around for Hyper plugin hyper-tab-icons can't reflect tab titles issue#1188
+# Override auto-title when static titles are desired ($ title My new title)
+title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
+# Turn off static titles ($ autotitle)
+autotitle() { export TITLE_OVERRIDDEN=0 }; autotitle
+# Condition checking if title is overridden
+overridden() { [[ $TITLE_OVERRIDDEN == 1 ]]; }
+# Echo asterisk if git state is dirty
+gitDirty() { [[ $(git status 2> /dev/null | grep -o '\w\+' | tail -n1) != ("clean"|"") ]] && echo "*" }
 
-	    if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
-		# detached session exists
-		tmux list-sessions
-		echo -n "Tmux: attach? (y/N/num) "
-		read
-		if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
-		    tmux attach-session
-		    if [ $? -eq 0 ]; then
-			echo "$(tmux -V) attached session"
-			return 0
-		    fi
-		elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
-		    tmux attach -t "$REPLY"
-		    if [ $? -eq 0 ]; then
-			echo "$(tmux -V) attached session"
-			return 0
-		    fi
-		fi
-	    fi
-
-	    if is_osx && is_exists 'reattach-to-user-namespace'; then
-		# on OS X force tmux's default command
-		# to spawn a shell in the user's namespace
-		tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-		tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
-	    else
-		tmux new-session && echo "tmux created new session"
-	    fi
-	fi
-    fi
+# Show cwd when shell prompts for input.
+tabtitle_precmd() {
+    if overridden; then return; fi
+    pwd=$(pwd) # Store full path as variable
+    cwd=${pwd##*/} # Extract current working dir only
+    print -Pn "\e]0;$cwd$(gitDirty)\a" # Replace with $pwd to show full path
 }
-tmux_automatically_attach_session
+[[ -z $precmd_functions ]] && precmd_functions=()
+precmd_functions=($precmd_functions tabtitle_precmd)
 
+# Prepend command (w/o arguments) to cwd while waiting for command to complete.
+tabtitle_preexec() {
+    if overridden; then return; fi
+    printf "\033]0;%s\a" "${1%% *} | $cwd$(gitDirty)" # Omit construct from $1 to show args
+}
+[[ -z $preexec_functions ]] && preexec_functions=()
+preexec_functions=($preexec_functions tabtitle_preexec)
+
+# initialize anyenv
+eval "$(anyenv init -)"
+
+# initialize pipenv
+# create virtual enviroment in each project
+export PIPENV_VENV_IN_PROJECT=true
