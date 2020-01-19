@@ -1,0 +1,23 @@
+# @file ~/.github/workflow/main.yaml
+# ref:
+# https://github.com/marketplace/actions/shellcheck
+
+on:
+  push:
+    branches:
+      - master
+
+name: "Lint"
+permissions: {}
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: './scripts'
+          additional_files: 'install'

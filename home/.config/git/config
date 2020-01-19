@@ -1,0 +1,12 @@
+# @file ~/.config/git/config
+
+[user]
+    name = takyshu98
+    email = shuhei.takiguchi.0908@gmail.com
+[core]
+    editor = "code --wait "
+[color]
+    ui = true
+[push]
+    default = current
+    autoSetupRemote = true

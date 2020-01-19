@@ -1,0 +1,63 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+# set default loading async
+apply = ["defer"]
+
+# ref: https://sheldon.cli.rs/Examples.html#deferred-loading-of-plugins-in-zsh
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
+[plugins]
+
+# For example:
+#
+# [plugins.base16]
+# github = "chriskempson/base16-shell"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit -d "${XDG_CACHE_HOME}/.zcompdump"'
+
+# ref: https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+[plugins.brew-completion]
+inline = 'type brew &>/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"'
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+use=["zsh-abbr.zsh"]
+apply = ["source"]
+
+[plugins.enhancd]
+github = "b4b4r07/enhancd"
+
+[plugins.enhancd.hooks]
+pre = '''
+export ENHANCD_DIR="${XDG_STATE_HOME}/.enhancd" && export ENHANCD_FILTER="fzf --preview='exa -al --tree --level 1 --group-directories-first --git-ignore --header --git --no-user --no-time --no-filesize --no-permissions {}'"
+'''
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'

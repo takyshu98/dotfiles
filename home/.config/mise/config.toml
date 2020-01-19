@@ -1,0 +1,10 @@
+# @file ~/.config/mise/config.toml
+# ref:
+# https://mise.jdx.dev/configuration.html#global-config-config-mise-config-toml
+
+[tools]
+# global tool versions go here
+java = 'openjdk-17' # https://github.com/jdx/mise/blob/main/docs/java.md
+nodejs = 'latest'   # https://github.com/jdx/mise/blob/main/docs/node.md
+python = '3.10'     # https://github.com/jdx/mise/blob/main/docs/python.md
+#pipenv = 'latest'   # https://github.com/mise-plugins/rtx-pipenv
