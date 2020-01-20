@@ -23,5 +23,5 @@ if [ ! -d ~/bin ]; then
   echo "Error: Directory ~/bin does not exist."
   exit 1
 else
-  find "$DOTPATH/bin/" -type f -executable -exec ln -fvns {} ~/bin/ \;
+  find "$DOTPATH/bin/" -type f -exec ln -fvns {} ~/bin/ \;
 fi
