@@ -19,7 +19,7 @@ for file in .??*; do
 done
 
 # make symbolic links from home/bin/ to dotfiles/bin/
-if [ ! -d "~/bin" ]; then
+if [ ! -d ~/bin ]; then
   echo "Error: Directory ~/bin does not exist."
   exit 1
 else
