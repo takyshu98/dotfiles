@@ -5,7 +5,8 @@
 #
 
 # initialize zplug
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 # add plugins by zplug
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
