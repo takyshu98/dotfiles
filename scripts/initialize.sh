@@ -4,7 +4,7 @@ set -e
 
 eval "$(anyenv init -)"
 
-if [ ! -d "$ANYENV_DEFINITION_ROOT" ]; then
+if [ ! -d "$HOME/.config/anyenv/anyenv-install" ]; then
   anyenv install --init
 fi
 
