@@ -3,7 +3,11 @@
 set -e
 
 eval "$(anyenv init -)"
-anyenv install --init
+
+if [ ! -d "$ANYENV_DEFINITION_ROOT" ]; then
+  anyenv install --init
+fi
+
 anyenv install jenv
 anyenv install nodenv
 anyenv install pyenv

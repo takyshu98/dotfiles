@@ -2,12 +2,18 @@
 
 set -eu
 
-mkdir -p ~/bin
-mkdir -p ~/share
-mkdir -p ~/src
+# make directories
+if [ ! -d ~/bin ]; then mkdir -p ~/bin; fi
+if [ ! -d ~/share ]; then mkdir -p ~/share; fi
+if [ ! -d ~/src ]; then mkdir -p ~/src; fi
+if [ ! -d ~/.ssh ]; then
+  mkdir -p ~/.ssh
+  touch ~/.ssh/config
+  chmod 700 ~/.ssh
+  chmod 600 ~/.ssh/*
+fi
 
-# install homebrew
-# to install git command before use
+# install homebrew and git in it
 if ! command -v brew >/dev/null 2>&1; then
   # https://brew.sh/
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

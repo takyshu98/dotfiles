@@ -9,7 +9,7 @@ fi
 
 cd "$DOTPATH" || exit 1
 
-# make symbolic links from home to dotfiles
+# make symbolic links from ~/.* to ~/share/dotfiles/.*
 for file in .??*; do
   [[ "$file" == ".git" ]] && continue
   [[ "$file" == ".gitignore" ]] && continue
@@ -18,7 +18,7 @@ for file in .??*; do
   ln -fvns "$DOTPATH/$file" "$HOME/$file"
 done
 
-# make symbolic links from home/bin/ to dotfiles/bin/
+# make symbolic links from ~/bin/.* to ~/share/dotfiles/bin/.*
 if [ ! -d ~/bin ]; then
   echo "Error: Directory ~/bin does not exist."
   exit 1
