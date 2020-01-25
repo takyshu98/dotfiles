@@ -19,3 +19,10 @@ fi
 if [ ! -d "$HOME/.anyenv/envs/pyenv" ]; then
   anyenv install pyenv
 fi
+
+if [ ! -d "$HOME/.anyenv/plugins" ]; then
+  mkdir -p "$HOME/.anyenv/plugins"
+  git clone https://github.com/znz/anyenv-update.git "$HOME/.anyenv/plugins/anyenv-update"
+fi
+
+anyenv update
