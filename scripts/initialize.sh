@@ -1,28 +1,33 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
+# anyenv
 eval "$(anyenv init -)"
-
 if [ ! -d "$HOME/.config/anyenv/anyenv-install" ]; then
   anyenv install --init
 fi
 
-if [ ! -d "$HOME/.anyenv/envs/jenv" ]; then
+ANYPATH="$HOME/.anyenv"
+
+# jenv
+if [ ! -d "$ANYPATH/envs/jenv" ]; then
   anyenv install jenv
 fi
 
-if [ ! -d "$HOME/.anyenv/envs/nodenv" ]; then
+# nodenv
+if [ ! -d "$ANYPATH/envs/nodenv" ]; then
   anyenv install nodenv
 fi
 
-if [ ! -d "$HOME/.anyenv/envs/pyenv" ]; then
+# pyenv
+if [ ! -d "$ANYPATH/envs/pyenv" ]; then
   anyenv install pyenv
 fi
 
-if [ ! -d "$HOME/.anyenv/plugins" ]; then
-  mkdir -p "$HOME/.anyenv/plugins"
-  git clone https://github.com/znz/anyenv-update.git "$HOME/.anyenv/plugins/anyenv-update"
+# anyenv-update
+if [ ! -d "$ANYPATH/plugins" ]; then
+  mkdir -p "$ANYPATH/plugins"
+  git clone https://github.com/znz/anyenv-update.git "$ANYPATH/plugins/anyenv-update"
 fi
-
 anyenv update
