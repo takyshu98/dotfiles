@@ -36,6 +36,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # set zsh options
 setopt hist_ignore_dups
+setopt no_clobber
 unsetopt PROMPT_SP # work around for Hyper first line percent sign issue#2144
 
 # set zsh emacs key bindings
@@ -46,9 +47,10 @@ alias ls='ls -FG'
 
 # set shell variables
 # PROMPT=$'[%~]\n%m{%n}%% '
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # set shell functions
 # work around for Hyper plugin hyper-tab-icons can't reflect tab titles issue#1188
