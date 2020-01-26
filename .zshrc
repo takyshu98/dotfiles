@@ -55,7 +55,7 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 # set shell functions
 # work around for Hyper plugin hyper-tab-icons can't reflect tab titles issue#1188
 # Override auto-title when static titles are desired ($ title My new title)
-title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
+title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a" }
 # Turn off static titles ($ autotitle)
 autotitle() { export TITLE_OVERRIDDEN=0 }; autotitle
 # Condition checking if title is overridden

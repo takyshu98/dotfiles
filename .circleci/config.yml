@@ -13,7 +13,7 @@ workflows:
           pattern: '*'
       - shellcheck/check:
           pattern: '.zshenv'
-          # ignore: 'SC2148' # Ignore "Add shebang to the top of your script"
+          ignore: 'SC2148' # Ignore "Add shebang to the top of your script"
       - shellcheck/check:
           pattern: '.zshrc'
           # ignore: 'SC2148'
