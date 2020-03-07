@@ -46,6 +46,7 @@ cask "karabiner-elements"
 cask "skype"
 cask "visual-studio-code"
 cask "wireshark"
+mas "BetterSnapTool", id: 417375580
 mas "DaisyDisk", id: 411643860
 mas "ForkLift", id: 412448059
 mas "Keynote", id: 409183694
