@@ -13,15 +13,15 @@ if [ ! -d ~/.ssh ]; then
   chmod 600 ~/.ssh/*
 fi
 
-# install homebrew and git in it
+# install homebrew
 if ! command -v brew >/dev/null 2>&1; then
-  # https://brew.sh/
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   echo
 fi
 
 DOTPATH="$HOME/share/dotfiles"
 
+# clone repository
 if [ ! -d "$DOTPATH" ]; then
   git clone https://github.com/takyshu98/dotfiles.git "$DOTPATH"
 else
@@ -37,11 +37,6 @@ cd "$DOTPATH"
 
 brew bundle
 echo
-
-# TODO
-# Mac basic settings
-# scripts/configure.sh
-# echo
 
 scripts/deploy.sh
 echo

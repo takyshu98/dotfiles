@@ -30,4 +30,5 @@ if [ ! -d "$ANYPATH/plugins" ]; then
   mkdir -p "$ANYPATH/plugins"
   git clone https://github.com/znz/anyenv-update.git "$ANYPATH/plugins/anyenv-update"
 fi
+
 anyenv update
