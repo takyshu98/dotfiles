@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -e
+set -eu
+
+readonly SCREENSHOT_SAVE_PATH="${HOME}/var/screenshot"
 
 echo "==> Configuring Trackpad options..."
 
@@ -35,3 +37,6 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool "false"
 
 # Deactivate auto spell correction
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool "false"
+
+# Change screenshot save directory
+defaults write com.apple.screencapture location "${SCREENSHOT_SAVE_PATH}"

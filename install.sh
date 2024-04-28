@@ -39,16 +39,16 @@ else
   echo
 fi
 
-# Restore macOS settings
-"${DOTPATH}/scripts/defaults.sh"
+# Install command line tools and applications
+brew bundle --file "${DOTPATH}/Brewfile"
 echo
 
 # Make symbolic links and directories
 "${DOTPATH}/scripts/symlink.sh"
 echo
 
-# Install command line tools and applications
-brew bundle --file "${DOTPATH}/Brewfile"
+# Restore macOS settings
+"${DOTPATH}/scripts/defaults.sh"
 echo
 
 # Restore application settings

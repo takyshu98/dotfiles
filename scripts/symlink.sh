@@ -32,9 +32,10 @@ mkdir -pv "${XDG_STATE_HOME}"
 find "${DOTHOME}/.config" -maxdepth 1 ! -name '.config' ! -name '.DS_Store' -exec ln -fvns {} "${XDG_CONFIG_HOME}" \;
 
 # Make directories with reference to Filesystem Hierarchy Standard
-mkdir -pv "${HOME}/bin" # for original commands
+mkdir -pv "${HOME}/bin" # for self manage commands
 mkdir -pv "${HOME}/src" # for code repositories
-mkdir -pv "${HOME}/tmp" # for temporary workspace
+mkdir -pv "${HOME}/var/"{archive,recent,tmp,screenshot} # for temporary workspace
+
 
 # find "${DOTHOME}/bin/" -type f ! -name '.DS_Store' -perm 0755 -exec ln -fvns {} "${HOME}/bin/" \;
 
