@@ -29,7 +29,7 @@ brew "ghq"
 
 # cui
 brew "bat"
-brew "exa"
+brew "eza"
 brew "fzf"
 brew "gawk"
 brew "gnu-sed"
