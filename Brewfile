@@ -26,6 +26,7 @@ brew "tmux"
 brew "git"
 brew "git-secrets"
 brew "ghq"
+brew "gh"
 
 # cui
 brew "bat"
@@ -37,18 +38,22 @@ brew "grep"
 brew "jq"
 brew "nkf"
 brew "tree"
+brew "xdg-ninja"
 brew "yq"
 
 # gui
 cask "1password", args: { appdir: "/Applications" }
+cask "canva"
+cask "chatgpt"
+cask "claude"
 cask "clipy"
 cask "cursor"
 cask "dbeaver-community"
-cask "docker", args: { appdir: "/Applications" }
+cask "docker-desktop", args: { appdir: "/Applications" }
 cask "dropbox", args: { appdir: "/Applications" }
-cask "eclipse-jee", args: { appdir: "/Applications" }
 cask "firefox", args: { appdir: "/Applications" }
 cask "font-hack-nerd-font"  # for starship
+cask "ghostty"
 cask "google-chrome", args: { appdir: "/Applications" }
 cask "google-drive"
 cask "google-japanese-ime", args: { appdir: "/Applications" }
@@ -58,10 +63,11 @@ cask "iterm2", args: { appdir: "/Applications" }
 cask "karabiner-elements", args: { appdir: "/Applications" }    # for US keybord language switching
 cask "notion"
 cask "obsidian"
+cask "orbstack"
 cask "raycast"
 cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "wezterm"
-cask "wireshark", args: { appdir: "/Applications" }
+cask "wireshark-app", args: { appdir: "/Applications" }
 cask "zoom", args: { appdir: "/Applications" }
 
 # app store
