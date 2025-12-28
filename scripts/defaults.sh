@@ -30,6 +30,14 @@ defaults write -g com.apple.mouse.scaling 3
 # Change scroll speed faster
 defaults write -g com.apple.scrollwheel.scaling 1
 
+echo "==> Configuring Dock options..."
+
+# Change Dock position
+defaults write com.apple.dock orientation left
+
+# Change Dock Visibility
+defaults write com.apple.dock autohide 1 # not effective
+
 echo "==> Configuring Other options..."
 
 # Deactivate auto capitalization

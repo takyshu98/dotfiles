@@ -1,0 +1,10 @@
+# @file ~/.config/ghostty/config
+# ref:
+# https://ghostty.org/docs/config
+
+theme = Iceberg Dark
+window-theme = ghostty
+background-opacity = 0.8
+macos-titlebar-style = tabs
+# macos-non-native-fullscreen = visible-menu
+# fullscreen = true

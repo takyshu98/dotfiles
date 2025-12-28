@@ -19,10 +19,10 @@ for file_path in "${DOTHOME}"/.??*; do
 done
 
 # Make symbolic links based on XDG Base Directory specification
-[[ -z "${XDG_CONFIG_HOME}" ]] && XDG_CONFIG_HOME="${HOME}/.config"
-[[ -z "${XDG_CACHE_HOME}" ]] && XDG_CACHE_HOME="${HOME}/.cache"
-[[ -z "${XDG_DATA_HOME}" ]] && XDG_DATA_HOME="${HOME}/.local/share"
-[[ -z "${XDG_STATE_HOME}" ]] && XDG_STATE_HOME="${HOME}/.local/state"
+: "${XDG_CONFIG_HOME:=${HOME}/.config}"
+: "${XDG_CACHE_HOME:=${HOME}/.cache}"
+: "${XDG_DATA_HOME:=${HOME}/.local/share}"
+: "${XDG_STATE_HOME:=${HOME}/.local/state}"
 
 mkdir -pv "${XDG_CONFIG_HOME}"
 mkdir -pv "${XDG_CACHE_HOME}"

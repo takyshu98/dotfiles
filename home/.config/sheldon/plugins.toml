@@ -56,7 +56,7 @@ github = "b4b4r07/enhancd"
 
 [plugins.enhancd.hooks]
 pre = '''
-export ENHANCD_DIR="${XDG_STATE_HOME}/.enhancd" && export ENHANCD_FILTER="fzf --preview='exa -al --tree --level 1 --group-directories-first --git-ignore --header --git --no-user --no-time --no-filesize --no-permissions {}'"
+export ENHANCD_DIR="${XDG_STATE_HOME}/.enhancd" && export ENHANCD_FILTER="fzf --preview='eza -al --tree --level 1 --group-directories-first --git-ignore --header --git --no-user --no-time --no-filesize --no-permissions {}'"
 '''
 
 [plugins.starship]
