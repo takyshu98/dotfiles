@@ -43,6 +43,7 @@ brew "yq"
 
 # gui
 cask "1password", args: { appdir: "/Applications" }
+cask "aqua-voice"
 cask "canva"
 cask "chatgpt"
 cask "claude"
