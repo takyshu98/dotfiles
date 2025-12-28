@@ -52,7 +52,7 @@ echo
 echo
 
 # Restore application settings
-mackup -v restore
-echo
+# mackup -v restore
+# echo
 
 echo "Installation completed!"
