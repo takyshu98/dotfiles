@@ -1,5 +1,36 @@
 # @file ~/.config/git/ignore
 
+# ===========================
+# macOS
+# ===========================
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
 
+# ===========================
+# Editors & IDEs
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.*.sw?
+
+# ===========================
+# Claude Code
+# ===========================
 **/.claude/settings.local.json
+
+# ===========================
+# Temporary & Backup files
+# ===========================
+*.bak
+*.tmp
+
+# ===========================
+# Other OS
+# ===========================
+Thumbs.db
+Desktop.ini

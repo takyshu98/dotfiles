@@ -1,4 +1,34 @@
+# ===========================
+# macOS
+# ===========================
 .DS_Store
+**/.DS_Store
+
+# ===========================
+# Homebrew
+# ===========================
 Brewfile.lock.json
 
+# ===========================
+# Karabiner
+# ===========================
 /home/.config/karabiner/automatic_backups/
+
+# ===========================
+# Zsh runtime files
+# ===========================
+home/.config/zsh/.zsh_history
+home/.config/zsh/.zcompcache/
+home/.config/zsh/.zsh_sessions/
+
+# ===========================
+# Neovim generated files
+# ===========================
+home/.config/nvim/lazy-lock.json
+home/.config/nvim/lazyvim.json
+home/.config/nvim/.neoconf.json
+
+# ===========================
+# macOS Preferences
+# ===========================
+home/Library/Preferences/
