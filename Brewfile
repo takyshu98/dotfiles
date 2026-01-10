@@ -6,6 +6,7 @@
 # Add repository
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "nikitabobko/tap"
 
 # configuration manager
 brew "mackup"
@@ -31,19 +32,24 @@ brew "gh"
 # cui
 brew "bat"
 brew "eza"
+brew "fd"
 brew "fzf"
 brew "gawk"
 brew "gnu-sed"
 brew "grep"
 brew "jq"
+brew "lazygit"
 brew "neovim"
 brew "nkf"
 brew "tree"
+brew "tree-sitter-cli"
+brew "ripgrep"
 brew "xdg-ninja"
 brew "yq"
 
 # gui
 cask "1password", args: { appdir: "/Applications" }
+cask "aerospace"
 cask "aqua-voice"
 cask "canva"
 cask "chatgpt"
