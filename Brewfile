@@ -6,7 +6,8 @@
 # Add repository
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "nikitabobko/tap"
+tap "nikitabobko/tap" # for aerospace
+tap "FelixKratz/formulae"
 
 # configuration manager
 brew "mackup"
@@ -52,6 +53,7 @@ brew "yq"
 cask "1password", args: { appdir: "/Applications" }
 cask "aerospace"
 cask "aqua-voice"
+cask "borders"
 cask "canva"
 cask "chatgpt"
 cask "claude"
