@@ -54,7 +54,6 @@ brew "felixkratz/formulae/borders"
 cask "1password", args: { appdir: "/Applications" }
 cask "aerospace"
 cask "aqua-voice"
-cask "borders"
 cask "canva"
 cask "chatgpt"
 cask "claude"
