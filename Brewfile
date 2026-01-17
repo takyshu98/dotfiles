@@ -7,7 +7,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "nikitabobko/tap" # for aerospace
-tap "FelixKratz/formulae"
+tap "felixkratz/formulae" # for borders
 
 # configuration manager
 brew "mackup"
@@ -48,6 +48,7 @@ brew "tree-sitter-cli"
 brew "ripgrep"
 brew "xdg-ninja"
 brew "yq"
+brew "felixkratz/formulae/borders"
 
 # gui
 cask "1password", args: { appdir: "/Applications" }
