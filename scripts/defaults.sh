@@ -48,3 +48,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool "false"
 
 # Change screenshot save directory
 defaults write com.apple.screencapture location "${SCREENSHOT_SAVE_PATH}"
+
+# Activate spans-displays
+defaults write com.apple.spaces spans-displays -bool true
