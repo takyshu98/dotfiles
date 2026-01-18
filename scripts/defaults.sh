@@ -36,7 +36,7 @@ echo "==> Configuring Dock options..."
 defaults write com.apple.dock orientation left
 
 # Change Dock Visibility
-defaults write com.apple.dock autohide 1 # not effective
+defaults write com.apple.dock autohide -bool true
 
 echo "==> Configuring Other options..."
 
@@ -51,3 +51,8 @@ defaults write com.apple.screencapture location "${SCREENSHOT_SAVE_PATH}"
 
 # Activate spans-displays
 defaults write com.apple.spaces spans-displays -bool true
+
+echo "==> Applying changes..."
+for app in "Dock" "SystemUIServer"; do
+  killall "${app}" > /dev/null 2>&1
+done
