@@ -76,6 +76,7 @@ cask "nani"
 cask "notion"
 cask "obsidian"
 cask "orbstack"
+cask "pencil"
 cask "raycast"
 cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "wezterm"
