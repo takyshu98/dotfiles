@@ -68,6 +68,7 @@ cask "ghostty"
 cask "google-chrome", args: { appdir: "/Applications" }
 cask "google-drive"
 cask "google-japanese-ime", args: { appdir: "/Applications" }
+cask "homerow"
 cask "insomnia"
 cask "intellij-idea-ce"
 cask "iterm2", args: { appdir: "/Applications" }
