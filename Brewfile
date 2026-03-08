@@ -58,6 +58,7 @@ cask "canva"
 cask "chatgpt"
 cask "claude"
 cask "clipy"
+cask "cmux"
 cask "cursor"
 cask "dbeaver-community"
 cask "docker-desktop", args: { appdir: "/Applications" }
