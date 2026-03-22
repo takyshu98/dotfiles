@@ -79,6 +79,7 @@ cask "notion"
 cask "obsidian"
 cask "orbstack"
 cask "raycast"
+cask "session-manager-plugin"
 cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "wezterm"
 cask "wireshark-app", args: { appdir: "/Applications" }
