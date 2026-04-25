@@ -4,7 +4,7 @@
 
 [tools]
 # global tool versions go here
-python = '3.10'     # https://github.com/jdx/mise/blob/main/docs/python.md
+python = '3.12'     # https://github.com/jdx/mise/blob/main/docs/python.md
 uv = "latest"
 
 java = 'openjdk-17' # https://github.com/jdx/mise/blob/main/docs/java.md
