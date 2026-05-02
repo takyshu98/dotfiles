@@ -16,7 +16,7 @@ fi
 
 # Install Nix
 if ! command -v nix >/dev/null 2>&1; then
-  curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --no-modify-profile
+  curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --no-modify-profile --no-confirm
   echo
 fi
 
@@ -59,9 +59,9 @@ echo
 
 # Apply nix-darwin configuration (replaces scripts/defaults.sh)
 if command -v darwin-rebuild >/dev/null 2>&1; then
-  darwin-rebuild switch --flake "${DOTPATH}/nix#default"
+  sudo darwin-rebuild switch --flake "${DOTPATH}/nix#default"
 else
-  nix run nix-darwin -- switch --flake "${DOTPATH}/nix#default"
+  sudo nix run nix-darwin -- switch --flake "${DOTPATH}/nix#default"
 fi
 echo
 
