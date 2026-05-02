@@ -14,6 +14,16 @@ if [ "${ARCH_TYPE}" = "arm64" ]; then
   echo
 fi
 
+# Install Nix
+if ! command -v nix >/dev/null 2>&1; then
+  curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --no-modify-profile
+  echo
+fi
+
+# Source Nix for the current session
+# shellcheck disable=SC1091
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
 # Install Homebrew
 if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -47,8 +57,12 @@ echo
 "${DOTPATH}/scripts/symlink.sh"
 echo
 
-# Restore macOS settings
-"${DOTPATH}/scripts/defaults.sh"
+# Apply nix-darwin configuration (replaces scripts/defaults.sh)
+if command -v darwin-rebuild >/dev/null 2>&1; then
+  darwin-rebuild switch --flake "${DOTPATH}/nix#default"
+else
+  nix run nix-darwin -- switch --flake "${DOTPATH}/nix#default"
+fi
 echo
 
 # Restore application settings

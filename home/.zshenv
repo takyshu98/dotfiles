@@ -17,3 +17,8 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Set zdotdir
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# Set up Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
