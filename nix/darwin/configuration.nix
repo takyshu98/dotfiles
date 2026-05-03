@@ -7,12 +7,17 @@ in
 {
   system.defaults = {
     NSGlobalDomain = {
-      "com.apple.trackpad.scaling" = 3;
-      "com.apple.mouse.scaling" = 3;
-      "com.apple.scrollwheel.scaling" = 1;
-      "com.apple.mouse.tapBehavior" = 1;
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
+    };
+
+    CustomUserPreferences = {
+      NSGlobalDomain = {
+        "com.apple.trackpad.scaling" = 3;
+        "com.apple.mouse.scaling" = 3;
+        "com.apple.scrollwheel.scaling" = 1;
+        "com.apple.mouse.tapBehavior" = 1;
+      };
     };
 
     trackpad = {
