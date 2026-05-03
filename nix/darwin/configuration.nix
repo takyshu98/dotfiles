@@ -16,7 +16,6 @@ in
         "com.apple.trackpad.scaling" = 3;
         "com.apple.mouse.scaling" = 3;
         "com.apple.scrollwheel.scaling" = 1;
-        "com.apple.mouse.tapBehavior" = 1;
       };
     };
 
@@ -36,6 +35,11 @@ in
 
     spaces.spans-displays = true;
   };
+
+  # tapBehavior requires -currentHost write, not handled by CustomUserPreferences
+  system.activationScripts.postActivation.text = ''
+    defaults -currentHost write -g com.apple.mouse.tapBehavior -bool true
+  '';
 
   system.primaryUser = username;
   system.stateVersion = 6;
