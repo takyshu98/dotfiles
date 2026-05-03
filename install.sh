@@ -15,7 +15,7 @@ if [ "${ARCH_TYPE}" = "arm64" ]; then
 fi
 
 # Install Nix
-if [ ! -e '/nix/receipt.json' ]; then
+if [ ! -d '/nix/store' ]; then
   curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --no-modify-profile --no-confirm
   echo
 fi
