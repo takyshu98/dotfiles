@@ -59,9 +59,9 @@ echo
 
 # Apply nix-darwin configuration (replaces scripts/defaults.sh)
 if command -v darwin-rebuild >/dev/null 2>&1; then
-  sudo -H darwin-rebuild switch --flake "${DOTPATH}/nix#default"
+  sudo -E darwin-rebuild switch --flake "${DOTPATH}/nix#default"
 else
-  sudo -H nix run nix-darwin -- switch --flake "${DOTPATH}/nix#default"
+  sudo -E nix run nix-darwin -- switch --flake "${DOTPATH}/nix#default"
 fi
 echo
 
