@@ -1,18 +1,14 @@
-#!//bin/bash
+#!/bin/bash
 
 set -eu
 
-readonly ARCH_TYPE="$(arch)"
 readonly DOTPATH="${HOME}/share/dotfiles"
 
 echo -e "\nInstallation has started...\n"
-echo -e "My architecture: ${ARCH_TYPE}\n"
 
 # Install Rosetta 2 for Apple silicon
-if [ "${ARCH_TYPE}" = "arm64" ]; then
-  softwareupdate --install-rosetta --agree-to-license
-  echo
-fi
+softwareupdate --install-rosetta --agree-to-license
+echo
 
 # Install Nix
 if [ ! -d '/nix/store' ]; then
@@ -31,11 +27,7 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # Export brew path to Homebrew Bundle
-if [ "${ARCH_TYPE}" = "i386" ]; then
-  export PATH="/usr/local/bin:${PATH}"    # for Intel
-elif [ "${ARCH_TYPE}" = "arm64" ]; then
-  export PATH="/opt/homebrew/bin:${PATH}" # for Apple silicon
-fi
+export PATH="/opt/homebrew/bin:${PATH}" # for Apple silicon
 
 # Clone repository
 if [ ! -d "${DOTPATH}" ]; then
@@ -70,3 +62,4 @@ echo
 # echo
 
 echo "Installation completed!"
+
