@@ -74,6 +74,7 @@ cask "insomnia"
 cask "intellij-idea-ce"
 cask "iterm2", args: { appdir: "/Applications" }
 cask "karabiner-elements", args: { appdir: "/Applications" }    # for US keybord language switching
+cask "keycastr"
 cask "nani"
 cask "notion"
 cask "obsidian"
