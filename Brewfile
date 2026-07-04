@@ -73,7 +73,7 @@ cask "google-drive"
 cask "google-japanese-ime", args: { appdir: "/Applications" }
 cask "homerow"
 cask "insomnia"
-cask "intellij-idea-ce"
+#cask "intellij-idea-ce"
 cask "iterm2", args: { appdir: "/Applications" }
 cask "karabiner-elements", args: { appdir: "/Applications" }    # for US keybord language switching
 cask "keycastr"
@@ -86,6 +86,7 @@ cask "session-manager-plugin"
 cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "wezterm"
 cask "wireshark-app", args: { appdir: "/Applications" }
+cask "zed"
 cask "zoom", args: { appdir: "/Applications" }
 
 # app store
