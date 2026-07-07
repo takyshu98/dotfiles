@@ -6,6 +6,7 @@
   }, 
   "enabledPlugins": {
     "example-skills@anthropic-agent-skills": true,
+    "expo@claude-plugins-official": true,
     "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
