@@ -12,7 +12,7 @@ fi
 # Make symbolic links from ~/.* to ~/share/dotfiles/home/.*
 for file_path in "${DOTHOME}"/.??*; do
   file_name="$(basename "${file_path}")"
-  if [[ "${file_name}" =~ ^(\.DS_Store|\.config|\.git|\.github|\.gitignore)$ ]]; then
+  if [[ "${file_name}" =~ ^(\.DS_Store|\.config|\.claude|\.git|\.github|\.gitignore)$ ]]; then
     continue
   fi
   ln -fvns "${DOTHOME}/${file_name}" "${HOME}/${file_name}"
@@ -30,6 +30,12 @@ mkdir -pv "${XDG_DATA_HOME}"
 mkdir -pv "${XDG_STATE_HOME}"
 
 find "${DOTHOME}/.config" -maxdepth 1 ! -name '.config' ! -name '.DS_Store' -exec ln -fvns {} "${XDG_CONFIG_HOME}" \;
+
+# Link only managed files inside ~/.claude, since the rest of the directory
+# is live application state (history, sessions, cache) that must stay a real
+# directory, not a symlinked one.
+mkdir -pv "${HOME}/.claude"
+ln -fvns "${DOTHOME}/.claude/settings.json" "${HOME}/.claude/settings.json"
 
 # Make directories with reference to Filesystem Hierarchy Standard
 mkdir -pv "${HOME}/bin" # for self manage commands
