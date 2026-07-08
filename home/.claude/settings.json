@@ -51,7 +51,6 @@
       "Bash(git reset --hard:*)",
       "Bash(sudo:*)",
       "Bash(ssh:*)",
-      "Bash(npx:*)",
       "Bash(gh repo delete:*)",
       "Bash(gh repo archive:*)",
       "Bash(gh repo rename:*)",
