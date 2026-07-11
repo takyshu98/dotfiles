@@ -91,7 +91,7 @@ cask "zoom", args: { appdir: "/Applications" }
 
 # app store
 mas "DaisyDisk", id: 411643860
-mas "ForkLift", id: 412448059
+#mas "ForkLift", id: 412448059
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
