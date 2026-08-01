@@ -33,12 +33,12 @@ brew "gh"
 brew "bat"
 brew "eza"
 brew "fd"
-brew "ffmpeg-full", link: overwrite
+brew "ffmpeg-full", link: :overwrite
 brew "fzf"
 brew "gawk"
 brew "gnu-sed"
 brew "grep"
-brew "imagemagick-full", link: overwrite
+brew "imagemagick-full", link: :overwrite
 brew "jq"
 brew "lazygit"
 brew "luarocks"
