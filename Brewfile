@@ -38,6 +38,7 @@ brew "fzf"
 brew "gawk"
 brew "gnu-sed"
 brew "grep"
+brew "herdr"
 brew "imagemagick-full", link: :overwrite
 brew "jq"
 brew "lazygit"
