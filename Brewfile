@@ -5,7 +5,6 @@
 
 # Add repository
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "nikitabobko/tap" # for aerospace
 tap "felixkratz/formulae" # for borders
 
@@ -34,19 +33,25 @@ brew "gh"
 brew "bat"
 brew "eza"
 brew "fd"
+brew "ffmpeg-full", link: overwrite
 brew "fzf"
 brew "gawk"
 brew "gnu-sed"
 brew "grep"
+brew "imagemagick-full", link: overwrite
 brew "jq"
 brew "lazygit"
 brew "luarocks"
 brew "neovim"
 brew "nkf"
+brew "poppler"
+brew "resvg"
+brew "ripgrep"
+brew "sevenzip"
 brew "tree"
 brew "tree-sitter-cli"
-brew "ripgrep"
 brew "xdg-ninja"
+brew "yazi"
 brew "yq"
 brew "zoxide"
 brew "felixkratz/formulae/borders"
