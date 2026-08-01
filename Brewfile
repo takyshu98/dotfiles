@@ -48,6 +48,7 @@ brew "tree-sitter-cli"
 brew "ripgrep"
 brew "xdg-ninja"
 brew "yq"
+brew "zoxide"
 brew "felixkratz/formulae/borders"
 
 # gui
