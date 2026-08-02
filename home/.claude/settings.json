@@ -3,25 +3,39 @@
   "attribution": {
     "commit": "",
     "pr": ""
-  }, 
+  },
   "enabledPlugins": {
+    "codex@openai-codex": true,
     "example-skills@anthropic-agent-skills": true,
-    "expo@claude-plugins-official": true,
-    "codex@openai-codex": true
+    "expo@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
       "source": {
-        "source": "github",
-        "repo": "anthropics/skills"
+        "repo": "anthropics/skills",
+        "source": "github"
       }
     },
     "openai-codex": {
       "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
+        "repo": "openai/codex-plugin-cc",
+        "source": "github"
       }
     }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
   },
   "language": "japanese",
   "permissions": {
@@ -34,6 +48,17 @@
       "mcp__context7",
       "mcp__chrome-devtools",
       "mcp__plugin_expo_expo"
+    ],
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git merge:*)",
+      "Bash(gh pr:*)",
+      "Bash(npm install:*)",
+      "Bash(aws:*)",
+      "Bash(cdk:*)",
+      "Bash(docker push:*)",
+      "Bash(rm:*)"
     ],
     "deny": [
       "Read(./.env)",
@@ -55,22 +80,11 @@
       "Bash(gh repo archive:*)",
       "Bash(gh repo rename:*)",
       "Bash(gh repo edit --visibility:*)"
-    ],
-    "ask": [
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git merge:*)",
-      "Bash(gh pr:*)",
-      "Bash(npm install:*)",
-      "Bash(aws:*)",
-      "Bash(cdk:*)",
-      "Bash(docker push:*)",
-      "Bash(rm:*)"
-    ] 
+    ]
   },
   "plansDirectory": "./plans",
   "statusLine": {
-    "type": "command",
-    "command": "npx ccusage@latest statusline"
+    "command": "npx ccusage@latest statusline",
+    "type": "command"
   }
 }

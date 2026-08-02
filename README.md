@@ -14,5 +14,8 @@ bash -c "$(curl -L https://raw.githubusercontent.com/takyshu98/dotfiles/master/i
 mise install
 ```
 ```
+herdr integration install claude
+```
+```
 sudo reboot
 ```
