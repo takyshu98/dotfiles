@@ -47,7 +47,7 @@ zle -N select-history
 bindkey '^r' select-history
 
 # Activate zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # Set tool options
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border --no-scrollbar --color='bg+:-1''
