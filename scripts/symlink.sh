@@ -38,6 +38,12 @@ mkdir -pv "${HOME}/.claude"
 ln -fvns "${DOTHOME}/.claude/settings.json" "${HOME}/.claude/settings.json"
 ln -fvns "${DOTHOME}/.claude/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
 
+# Same idea for ~/.claude/skills: only the skills managed in this repo are
+# symlinked in, one directory at a time, so unmanaged skills installed
+# outside this repo are left untouched.
+mkdir -pv "${HOME}/.claude/skills"
+find "${DOTHOME}/.claude/skills" -mindepth 1 -maxdepth 1 -type d -exec ln -fvns {} "${HOME}/.claude/skills" \;
+
 # Make directories with reference to Filesystem Hierarchy Standard
 mkdir -pv "${HOME}/bin" # for self manage commands
 mkdir -pv "${HOME}/src" # for code repositories

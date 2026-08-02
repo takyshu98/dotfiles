@@ -1,0 +1,44 @@
+# Software Catalog for gen-keybind-cheatsheet
+#
+# Each entry identifies a piece of software by the config file patterns that
+# reveal its presence in a repo. `default_source` and `docs_url` start empty
+# and are filled in (and cached) the first time the skill successfully
+# resolves that software's Default Keybind set — see references/defaults/.
+#
+# New entries are appended here automatically when the skill encounters an
+# unrecognized config file, infers what it is, and the user confirms the
+# guess. Keep entries sorted by id.
+
+software:
+  - id: aerospace
+    config_patterns:
+      - "**/aerospace.toml"
+    notes: "AeroSpace tiling window manager for macOS. Ships with no built-in keybinds — config defines everything."
+
+  - id: ghostty
+    config_patterns:
+      - "**/ghostty/config"
+    notes: "Ghostty terminal emulator. Supports `ghostty +show-config --default --docs` for introspection."
+
+  - id: karabiner
+    config_patterns:
+      - "**/karabiner/karabiner.json"
+    notes: "Karabiner-Elements keyboard remapper for macOS. No software-level defaults; entries are all user-defined remaps layered on top of macOS system defaults."
+
+  - id: nvim
+    config_patterns:
+      - "**/nvim/init.lua"
+      - "**/nvim/lua/**/*.lua"
+    notes: "Neovim. Keybind sources may span core Neovim defaults, a distro (e.g. LazyVim), and plugin-defined maps — treat with extra care when classifying Keybind Status."
+
+  - id: tmux
+    config_patterns:
+      - "**/tmux.conf"
+      - "**/.tmux.conf"
+    notes: "tmux terminal multiplexer. Supports `tmux -f /dev/null list-keys` style introspection."
+
+  - id: wezterm
+    config_patterns:
+      - "**/wezterm.lua"
+      - "**/.wezterm.lua"
+    notes: "WezTerm terminal emulator, configured in Lua."
