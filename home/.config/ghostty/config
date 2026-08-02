@@ -2,9 +2,9 @@
 # ref:
 # https://ghostty.org/docs/config
 
-theme = Iceberg Dark
+theme = Ghostty Default Style Dark
 window-theme = ghostty
-background-opacity = 0.8
+# background-opacity = 0.95
 macos-titlebar-style = tabs
 # macos-non-native-fullscreen = visible-menu
 # fullscreen = true
