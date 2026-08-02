@@ -39,6 +39,7 @@ brew "gawk"
 brew "gnu-sed"
 brew "grep"
 brew "herdr"
+brew "hunk"
 brew "imagemagick-full", link: :overwrite
 brew "jq"
 brew "lazygit"
@@ -100,7 +101,7 @@ cask "zoom", args: { appdir: "/Applications" }
 mas "DaisyDisk", id: 411643860
 #mas "ForkLift", id: 412448059
 mas "Keynote", id: 361285480
-mas "Magnet", id: 441258766
+#mas "Magnet", id: 441258766
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "Slack", id: 803453959
