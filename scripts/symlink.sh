@@ -36,6 +36,7 @@ find "${DOTHOME}/.config" -maxdepth 1 ! -name '.config' ! -name '.DS_Store' -exe
 # directory, not a symlinked one.
 mkdir -pv "${HOME}/.claude"
 ln -fvns "${DOTHOME}/.claude/settings.json" "${HOME}/.claude/settings.json"
+ln -fvns "${DOTHOME}/.claude/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
 
 # Make directories with reference to Filesystem Hierarchy Standard
 mkdir -pv "${HOME}/bin" # for self manage commands
