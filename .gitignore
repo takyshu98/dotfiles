@@ -8,6 +8,7 @@
 # Homebrew
 # ===========================
 Brewfile.lock.json
+Brewfile.save
 
 # ===========================
 # Karabiner
@@ -20,6 +21,7 @@ Brewfile.lock.json
 home/.config/zsh/.zsh_history
 home/.config/zsh/.zcompcache/
 home/.config/zsh/.zsh_sessions/
+home/.config/zsh/.zcompdump
 
 # ===========================
 # Neovim generated files
