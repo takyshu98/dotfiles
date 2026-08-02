@@ -1,0 +1,5 @@
+# @file ~/.config/hunk/config.toml
+# ref:
+# https://github.com/modem-dev/hunk#config
+
+watch = true
