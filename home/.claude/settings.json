@@ -7,12 +7,19 @@
   "enabledPlugins": {
     "codex@openai-codex": true,
     "example-skills@anthropic-agent-skills": true,
-    "expo@claude-plugins-official": true
+    "expo@claude-plugins-official": true,
+    "mcp-apps@modelcontextprotocol-ext-apps": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
       "source": {
         "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "modelcontextprotocol-ext-apps": {
+      "source": {
+        "repo": "modelcontextprotocol/ext-apps",
         "source": "github"
       }
     },
