@@ -15,3 +15,4 @@ node = 'lts'     # https://github.com/jdx/mise/blob/main/docs/node.md
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:eas-cli" = "latest"
+"npm:wrangler" = "latest"
