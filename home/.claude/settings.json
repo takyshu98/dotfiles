@@ -5,15 +5,29 @@
     "pr": ""
   },
   "enabledPlugins": {
+    "cloudflare@cloudflare": true,
     "codex@openai-codex": true,
     "example-skills@anthropic-agent-skills": true,
     "expo@claude-plugins-official": true,
+    "hono-skill@hono": true,
     "mcp-apps@modelcontextprotocol-ext-apps": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
       "source": {
         "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "repo": "cloudflare/skills",
+        "source": "github"
+      }
+    },
+    "hono": {
+      "source": {
+        "repo": "yusukebe/hono-skill",
         "source": "github"
       }
     },
