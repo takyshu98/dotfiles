@@ -3,6 +3,10 @@
 # https://ghostty.org/docs/config
 
 theme = Ghostty Default Style Dark
+font-family = "Hack Nerd Font Mono"
+# font-feature = -dlig
+# font-thicken = true
+adjust-cell-height = 2
 window-theme = ghostty
 # background-opacity = 0.95
 macos-titlebar-style = tabs

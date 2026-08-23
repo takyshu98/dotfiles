@@ -4,61 +4,7 @@
     "commit": "",
     "pr": ""
   },
-  "enabledPlugins": {
-    "cloudflare@cloudflare": true,
-    "codex@openai-codex": true,
-    "example-skills@anthropic-agent-skills": true,
-    "expo@claude-plugins-official": true,
-    "hono-skill@hono": true,
-    "mcp-apps@modelcontextprotocol-ext-apps": true
-  },
-  "extraKnownMarketplaces": {
-    "anthropic-agent-skills": {
-      "source": {
-        "repo": "anthropics/skills",
-        "source": "github"
-      }
-    },
-    "cloudflare": {
-      "source": {
-        "repo": "cloudflare/skills",
-        "source": "github"
-      }
-    },
-    "hono": {
-      "source": {
-        "repo": "yusukebe/hono-skill",
-        "source": "github"
-      }
-    },
-    "modelcontextprotocol-ext-apps": {
-      "source": {
-        "repo": "modelcontextprotocol/ext-apps",
-        "source": "github"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "repo": "openai/codex-plugin-cc",
-        "source": "github"
-      }
-    }
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
-  },
-  "language": "japanese",
+  "enabledMcpjsonServers": ["linear-server"],
   "permissions": {
     "allow": [
       "Bash",
@@ -68,18 +14,8 @@
       "Write",
       "mcp__context7",
       "mcp__chrome-devtools",
-      "mcp__plugin_expo_expo"
-    ],
-    "ask": [
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git merge:*)",
-      "Bash(gh pr:*)",
-      "Bash(npm install:*)",
-      "Bash(aws:*)",
-      "Bash(cdk:*)",
-      "Bash(docker push:*)",
-      "Bash(rm:*)"
+      "mcp__plugin_expo_expo",
+      "mcp__linear-server"
     ],
     "deny": [
       "Read(./.env)",
@@ -101,11 +37,78 @@
       "Bash(gh repo archive:*)",
       "Bash(gh repo rename:*)",
       "Bash(gh repo edit --visibility:*)"
+    ],
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git merge:*)",
+      "Bash(gh pr:*)",
+      "Bash(npm install:*)",
+      "Bash(aws:*)",
+      "Bash(cdk:*)",
+      "Bash(docker push:*)",
+      "Bash(rm:*)"
     ]
   },
-  "plansDirectory": "./plans",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
-    "command": "npx ccusage@latest statusline",
-    "type": "command"
-  }
+    "type": "command",
+    "command": "npx ccusage@latest statusline"
+  },
+  "enabledPlugins": {
+    "cloudflare@cloudflare": true,
+    "codex@openai-codex": true,
+    "example-skills@anthropic-agent-skills": true,
+    "expo@claude-plugins-official": true,
+    "hono-skill@hono": true,
+    "mcp-apps@modelcontextprotocol-ext-apps": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
+    },
+    "hono": {
+      "source": {
+        "source": "github",
+        "repo": "yusukebe/hono-skill"
+      }
+    },
+    "modelcontextprotocol-ext-apps": {
+      "source": {
+        "source": "github",
+        "repo": "modelcontextprotocol/ext-apps"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
+  },
+  "language": "japanese",
+  "plansDirectory": "./plans",
+  "model": "opus"
 }
