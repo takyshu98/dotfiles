@@ -7,7 +7,7 @@
 tap "homebrew/bundle"
 tap "nikitabobko/tap" # for aerospace
 tap "felixkratz/formulae" # for borders
-tap "jannis-baum/tap" # for vivify
+tap "jannis-baum/tap", trusted: { formula: "vivify" }
 
 # configuration manager
 brew "mackup"
