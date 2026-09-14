@@ -7,6 +7,7 @@
 tap "homebrew/bundle"
 tap "nikitabobko/tap" # for aerospace
 tap "felixkratz/formulae" # for borders
+tap "jannis-baum/tap" # for vivify
 
 # configuration manager
 brew "mackup"
@@ -57,6 +58,7 @@ brew "yazi"
 brew "yq"
 brew "zoxide"
 brew "felixkratz/formulae/borders"
+brew "jannis-baum/tap/vivify"
 
 # gui
 cask "1password", args: { appdir: "/Applications" }

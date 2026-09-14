@@ -4,7 +4,6 @@
     "commit": "",
     "pr": ""
   },
-  "enabledMcpjsonServers": ["linear-server"],
   "permissions": {
     "allow": [
       "Bash",
@@ -50,6 +49,10 @@
       "Bash(rm:*)"
     ]
   },
+  "model": "opus",
+  "enabledMcpjsonServers": [
+    "linear-server"
+  ],
   "hooks": {
     "SessionStart": [
       {
@@ -110,5 +113,5 @@
   },
   "language": "japanese",
   "plansDirectory": "./plans",
-  "model": "opus"
+  "agentPushNotifEnabled": true
 }
