@@ -51,7 +51,8 @@
   },
   "model": "opus",
   "enabledMcpjsonServers": [
-    "linear-server"
+    "linear-server",
+    "context7"
   ],
   "hooks": {
     "SessionStart": [
