@@ -1,11 +1,110 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "opus",
-  "language": "japanese",
   "attribution": {
     "commit": "",
     "pr": ""
   },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Read",
+      "WebFetch",
+      "Write",
+      "mcp__context7",
+      "mcp__chrome-devtools",
+      "mcp__plugin_expo_expo",
+      "mcp__linear-server"
+    ],
+    "deny": [
+      "Read(//**/.env)",
+      "Read(//**/.env.*)",
+      "Read(//**/secrets/**)",
+      "Edit(//**/.env)",
+      "Edit(//**/.env.*)",
+      "Edit(//**/secrets/**)",
+      "Read(//**/*.pem)",
+      "Read(//**/*.key)",
+      "Read(//**/id_rsa*)",
+      "Read(//**/.netrc)",
+      "Read(//**/.npmrc)",
+      "Read(//**/credentials.json)",
+      "Read(//**/credentials)",
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(sudo:*)",
+      "Bash(ssh:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh repo archive:*)",
+      "Bash(gh repo rename:*)",
+      "Bash(gh repo edit --visibility:*)"
+    ],
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git merge:*)",
+      "Bash(gh pr:*)",
+      "Bash(npm install:*)",
+      "Bash(aws:*)",
+      "Bash(cdk:*)",
+      "Bash(docker push:*)",
+      "Bash(rm:*)",
+      "Bash(gh api:*)",
+      "Bash(gh secret:*)",
+      "Bash(gh workflow:*)",
+      "Bash(gh release:*)",
+      "Bash(npm publish:*)",
+      "Bash(pnpm publish:*)",
+      "Bash(cargo publish:*)",
+      "Bash(twine upload:*)",
+      "Bash(brew install:*)",
+      "Bash(brew uninstall:*)",
+      "Bash(pnpm add:*)",
+      "Bash(bun add:*)",
+      "Bash(pip install:*)",
+      "Bash(cargo install:*)",
+      "Bash(mise use:*)",
+      "Bash(git clean:*)",
+      "Bash(git restore:*)",
+      "Bash(git rebase:*)",
+      "Bash(git stash drop:*)",
+      "Bash(git stash clear:*)",
+      "Bash(git branch -D:*)"
+    ],
+    "blockReadsOutsideWorkingDirectories": true,
+    "additionalDirectories": [
+      "~/src",
+      "~/share/dotfiles",
+      "~/.claude",
+      "~/.agents",
+      "~/.config",
+      "~/.codex",
+      "~/.cursor",
+      "~/.gemini",
+      "~/.npm",
+      "~/.cache",
+      "~/.gradle",
+      "~/.local",
+      "~/.expo",
+      "~/.android",
+      "~/.docker",
+      "~/.cocoapods",
+      "~/.gem",
+      "~/.zshrc",
+      "~/.zshenv",
+      "~/.mcp.json",
+      "~/.mackup.cfg",
+      "~/.claude.json",
+      "~/.claude.json.backup"
+    ]
+  },
+  "model": "opus",
+  "enabledMcpjsonServers": [
+    "linear-server",
+    "context7"
+  ],
   "hooks": {
     "SessionStart": [
       {
@@ -32,143 +131,10 @@
       }
     ]
   },
-  "sandbox": {
-    "enabled": true,
-    "excludedCommands": ["node \"*/codex-companion.mjs\" *"],
-    "filesystem": {
-      "denyRead": [
-        "~/"
-      ],
-      "allowRead": [
-        "~/src",
-        "~/share/dotfiles",
-        "~/.claude",
-        "~/.agents",
-        "~/.config",
-        "~/.codex",
-        "~/.cursor",
-        "~/.gemini",
-        "~/.npm",
-        "~/.cache",
-        "~/.gradle",
-        "~/.local",
-        "~/.expo",
-        "~/.android",
-        "~/.docker",
-        "~/.cocoapods",
-        "~/.gem",
-        "~/.zshrc",
-        "~/.zshenv",
-        "~/.mcp.json",
-        "~/.mackup.cfg",
-        "~/.claude.json",
-        "~/.claude.json.backup"
-      ],
-      "denyWrite": [
-        "~/"
-      ],
-      "allowWrite": [
-        "~/src",
-        "~/share/dotfiles",
-        "~/.claude",
-        "~/.agents",
-        "~/.config",
-        "~/.codex",
-        "~/.cursor",
-        "~/.gemini",
-        "~/.npm",
-        "~/.cache",
-        "~/.gradle",
-        "~/.local",
-        "~/.expo",
-        "~/.android",
-        "~/.docker",
-        "~/.cocoapods",
-        "~/.gem",
-        "~/.zshrc",
-        "~/.zshenv",
-        "~/.mcp.json",
-        "~/.mackup.cfg",
-        "~/.claude.json",
-        "~/.claude.json.backup"
-      ]
-    }
+  "statusLine": {
+    "type": "command",
+    "command": "npx ccusage@latest statusline"
   },
-  "permissions": {
-    "blockReadsOutsideWorkingDirectories": true,
-    "additionalDirectories": [
-      "~/src",
-      "~/share/dotfiles",
-      "~/.claude",
-      "~/.agents",
-      "~/.config",
-      "~/.codex",
-      "~/.cursor",
-      "~/.gemini",
-      "~/.npm",
-      "~/.cache",
-      "~/.gradle",
-      "~/.local",
-      "~/.expo",
-      "~/.android",
-      "~/.docker",
-      "~/.cocoapods",
-      "~/.gem",
-      "~/.zshrc",
-      "~/.zshenv",
-      "~/.mcp.json",
-      "~/.mackup.cfg",
-      "~/.claude.json",
-      "~/.claude.json.backup"
-    ],
-    "allow": [
-      "Bash",
-      "Edit",
-      "Read",
-      "WebFetch",
-      "Write",
-      "mcp__context7",
-      "mcp__chrome-devtools",
-      "mcp__plugin_expo_expo",
-      "mcp__linear-server"
-    ],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./secrets/**)",
-      "Write(./.env)",
-      "Write(./.env.*)",
-      "Write(./secrets/**)",
-      "Edit(./.env)",
-      "Edit(./.env.*)",
-      "Edit(./secrets/**)",
-      "Bash(rm -rf:*)",
-      "Bash(git push --force:*)",
-      "Bash(git push -f:*)",
-      "Bash(git reset --hard:*)",
-      "Bash(sudo:*)",
-      "Bash(ssh:*)",
-      "Bash(gh repo delete:*)",
-      "Bash(gh repo archive:*)",
-      "Bash(gh repo rename:*)",
-      "Bash(gh repo edit --visibility:*)"
-    ],
-    "ask": [
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git merge:*)",
-      "Bash(gh pr:*)",
-      "Bash(npm install:*)",
-      "Bash(aws:*)",
-      "Bash(cdk:*)",
-      "Bash(docker push:*)",
-      "Bash(rm:*)"
-    ]
-  },
-  "enabledMcpjsonServers": [
-    "linear-server",
-    "context7"
-  ],
   "enabledPlugins": {
     "cloudflare@cloudflare": true,
     "codex@openai-codex": true,
@@ -209,10 +175,68 @@
       }
     }
   },
-  "agentPushNotifEnabled": true,
+  "language": "japanese",
+  "sandbox": {
+    "enabled": true,
+    "filesystem": {
+      "allowWrite": [
+        "~/src",
+        "~/share/dotfiles",
+        "~/.claude",
+        "~/.agents",
+        "~/.config",
+        "~/.codex",
+        "~/.cursor",
+        "~/.gemini",
+        "~/.npm",
+        "~/.cache",
+        "~/.gradle",
+        "~/.local",
+        "~/.expo",
+        "~/.android",
+        "~/.docker",
+        "~/.cocoapods",
+        "~/.gem",
+        "~/.zshrc",
+        "~/.zshenv",
+        "~/.mcp.json",
+        "~/.mackup.cfg",
+        "~/.claude.json",
+        "~/.claude.json.backup"
+      ],
+      "denyRead": [
+        "~/"
+      ],
+      "allowRead": [
+        "~/src",
+        "~/share/dotfiles",
+        "~/.claude",
+        "~/.agents",
+        "~/.config",
+        "~/.codex",
+        "~/.cursor",
+        "~/.gemini",
+        "~/.npm",
+        "~/.cache",
+        "~/.gradle",
+        "~/.local",
+        "~/.expo",
+        "~/.android",
+        "~/.docker",
+        "~/.cocoapods",
+        "~/.gem",
+        "~/.zshrc",
+        "~/.zshenv",
+        "~/.mcp.json",
+        "~/.mackup.cfg",
+        "~/.claude.json",
+        "~/.claude.json.backup"
+      ]
+    },
+    "excludedCommands": [
+      "node \"*/codex-companion.mjs\" *"
+    ]
+  },
   "plansDirectory": "./plans",
-  "statusLine": {
-    "type": "command",
-    "command": "npx ccusage@latest statusline"
-  }
+  "agentPushNotifEnabled": true
 }
