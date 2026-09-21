@@ -56,12 +56,16 @@ ln -fvns "${DOTHOME}/.claude/hooks/restrict-directories.py" "${HOME}/.claude/hoo
 # in settings.json are generated from allowed-dirs.json so the allowlist has a
 # single source of truth. Re-run this script after editing allowed-dirs.json
 # to regenerate settings.json; review with `git diff` before committing.
+#
+# additionalDirectories rejects non-directory entries (it warns at startup and
+# drops them), so it gets .directories only, while the sandbox takes both.
 DIRS_FILE="${DOTHOME}/.claude/allowed-dirs.json"
 SETTINGS_FILE="${DOTHOME}/.claude/settings.json"
 jq --slurpfile dirs "${DIRS_FILE}" '
-  .permissions.additionalDirectories = $dirs[0]
-  | .sandbox.filesystem.allowRead = $dirs[0]
-  | .sandbox.filesystem.allowWrite = $dirs[0]
+  ($dirs[0].directories + $dirs[0].files) as $all
+  | .permissions.additionalDirectories = $dirs[0].directories
+  | .sandbox.filesystem.allowRead = $all
+  | .sandbox.filesystem.allowWrite = $all
 ' "${SETTINGS_FILE}" > "${SETTINGS_FILE}.tmp" && mv "${SETTINGS_FILE}.tmp" "${SETTINGS_FILE}"
 
 # Make directories with reference to Filesystem Hierarchy Standard

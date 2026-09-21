@@ -91,19 +91,15 @@
       "~/.android",
       "~/.docker",
       "~/.cocoapods",
-      "~/.gem",
-      "~/.zshrc",
-      "~/.zshenv",
-      "~/.mcp.json",
-      "~/.mackup.cfg",
-      "~/.claude.json",
-      "~/.claude.json.backup"
+      "~/.gem"
     ]
   },
   "model": "opus",
   "enabledMcpjsonServers": [
     "linear-server",
-    "context7"
+    "context7",
+    "playwright",
+    "chrome-devtools"
   ],
   "hooks": {
     "SessionStart": [
@@ -139,9 +135,7 @@
     "cloudflare@cloudflare": true,
     "codex@openai-codex": true,
     "example-skills@anthropic-agent-skills": true,
-    "expo@claude-plugins-official": true,
-    "hono-skill@hono": true,
-    "mcp-apps@modelcontextprotocol-ext-apps": true
+    "expo@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
@@ -156,18 +150,6 @@
         "repo": "cloudflare/skills"
       }
     },
-    "hono": {
-      "source": {
-        "source": "github",
-        "repo": "yusukebe/hono-skill"
-      }
-    },
-    "modelcontextprotocol-ext-apps": {
-      "source": {
-        "source": "github",
-        "repo": "modelcontextprotocol/ext-apps"
-      }
-    },
     "openai-codex": {
       "source": {
         "source": "github",
@@ -178,6 +160,7 @@
   "language": "japanese",
   "sandbox": {
     "enabled": true,
+    "allowUnsandboxedCommands": false,
     "filesystem": {
       "allowWrite": [
         "~/src",
@@ -197,7 +180,6 @@
         "~/.docker",
         "~/.cocoapods",
         "~/.gem",
-        "~/.zshrc",
         "~/.zshenv",
         "~/.mcp.json",
         "~/.mackup.cfg",
@@ -225,7 +207,6 @@
         "~/.docker",
         "~/.cocoapods",
         "~/.gem",
-        "~/.zshrc",
         "~/.zshenv",
         "~/.mcp.json",
         "~/.mackup.cfg",

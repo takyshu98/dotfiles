@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""PreToolUse hook: block Read/Write/Edit/NotebookEdit/Grep/Glob outside
-the directories listed in ~/.claude/allowed-dirs.json.
+"""PreToolUse hook: block file tools outside the paths listed in
+~/.claude/allowed-dirs.json.
 
 Unlike permissions.blockReadsOutsideWorkingDirectories, this does not trust
 the launch cwd: it resolves the tool's actual target path and checks it
 against the allowlist regardless of where Claude Code was started.
+
+allowed-dirs.json separates "directories" from "files" because
+permissions.additionalDirectories rejects non-directory entries; this hook
+and the sandbox accept both.
 """
 import json
 import os
@@ -12,7 +16,11 @@ import sys
 
 ALLOWED_DIRS_FILE = os.path.expanduser("~/.claude/allowed-dirs.json")
 with open(ALLOWED_DIRS_FILE) as f:
-    ALLOWED_ABS = [os.path.realpath(os.path.expanduser(p)) for p in json.load(f)]
+    _allowed = json.load(f)
+ALLOWED_ABS = [
+    os.path.realpath(os.path.expanduser(p))
+    for p in _allowed["directories"] + _allowed["files"]
+]
 
 PATH_FIELD_BY_TOOL = {
     "Read": "file_path",

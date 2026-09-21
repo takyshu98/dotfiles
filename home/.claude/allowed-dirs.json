@@ -1,25 +1,28 @@
-[
-  "~/src",
-  "~/share/dotfiles",
-  "~/.claude",
-  "~/.agents",
-  "~/.config",
-  "~/.codex",
-  "~/.cursor",
-  "~/.gemini",
-  "~/.npm",
-  "~/.cache",
-  "~/.gradle",
-  "~/.local",
-  "~/.expo",
-  "~/.android",
-  "~/.docker",
-  "~/.cocoapods",
-  "~/.gem",
-  "~/.zshrc",
-  "~/.zshenv",
-  "~/.mcp.json",
-  "~/.mackup.cfg",
-  "~/.claude.json",
-  "~/.claude.json.backup"
-]
+{
+  "directories": [
+    "~/src",
+    "~/share/dotfiles",
+    "~/.claude",
+    "~/.agents",
+    "~/.config",
+    "~/.codex",
+    "~/.cursor",
+    "~/.gemini",
+    "~/.npm",
+    "~/.cache",
+    "~/.gradle",
+    "~/.local",
+    "~/.expo",
+    "~/.android",
+    "~/.docker",
+    "~/.cocoapods",
+    "~/.gem"
+  ],
+  "files": [
+    "~/.zshenv",
+    "~/.mcp.json",
+    "~/.mackup.cfg",
+    "~/.claude.json",
+    "~/.claude.json.backup"
+  ]
+}
