@@ -18,9 +18,109 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/restrict-directories.py\"",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
+  "sandbox": {
+    "enabled": true,
+    "excludedCommands": ["node \"*/codex-companion.mjs\" *"],
+    "filesystem": {
+      "denyRead": [
+        "~/"
+      ],
+      "allowRead": [
+        "~/src",
+        "~/share/dotfiles",
+        "~/.claude",
+        "~/.agents",
+        "~/.config",
+        "~/.codex",
+        "~/.cursor",
+        "~/.gemini",
+        "~/.npm",
+        "~/.cache",
+        "~/.gradle",
+        "~/.local",
+        "~/.expo",
+        "~/.android",
+        "~/.docker",
+        "~/.cocoapods",
+        "~/.gem",
+        "~/.zshrc",
+        "~/.zshenv",
+        "~/.mcp.json",
+        "~/.mackup.cfg",
+        "~/.claude.json",
+        "~/.claude.json.backup"
+      ],
+      "denyWrite": [
+        "~/"
+      ],
+      "allowWrite": [
+        "~/src",
+        "~/share/dotfiles",
+        "~/.claude",
+        "~/.agents",
+        "~/.config",
+        "~/.codex",
+        "~/.cursor",
+        "~/.gemini",
+        "~/.npm",
+        "~/.cache",
+        "~/.gradle",
+        "~/.local",
+        "~/.expo",
+        "~/.android",
+        "~/.docker",
+        "~/.cocoapods",
+        "~/.gem",
+        "~/.zshrc",
+        "~/.zshenv",
+        "~/.mcp.json",
+        "~/.mackup.cfg",
+        "~/.claude.json",
+        "~/.claude.json.backup"
+      ]
+    }
+  },
   "permissions": {
+    "blockReadsOutsideWorkingDirectories": true,
+    "additionalDirectories": [
+      "~/src",
+      "~/share/dotfiles",
+      "~/.claude",
+      "~/.agents",
+      "~/.config",
+      "~/.codex",
+      "~/.cursor",
+      "~/.gemini",
+      "~/.npm",
+      "~/.cache",
+      "~/.gradle",
+      "~/.local",
+      "~/.expo",
+      "~/.android",
+      "~/.docker",
+      "~/.cocoapods",
+      "~/.gem",
+      "~/.zshrc",
+      "~/.zshenv",
+      "~/.mcp.json",
+      "~/.mackup.cfg",
+      "~/.claude.json",
+      "~/.claude.json.backup"
+    ],
     "allow": [
       "Bash",
       "Edit",
