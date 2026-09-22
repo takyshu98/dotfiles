@@ -2,9 +2,20 @@
 """PreToolUse hook: block file tools outside the paths listed in
 ~/.claude/allowed-dirs.json.
 
-Unlike permissions.blockReadsOutsideWorkingDirectories, this does not trust
-the launch cwd: it resolves the tool's actual target path and checks it
-against the allowlist regardless of where Claude Code was started.
+Two checks, both against the same allowlist:
+1. The session's cwd must itself be inside the allowlist. This blocks every
+   matched tool, including Bash, whenever Claude Code was launched outside
+   an approved directory.
+2. For file tools (Read/Write/Edit/MultiEdit/NotebookEdit/Grep/Glob), the
+   tool's actual target path is resolved and checked too. Unlike
+   permissions.blockReadsOutsideWorkingDirectories, this does not trust the
+   launch cwd for this check either: it looks at the resolved target
+   regardless of where Claude Code was started.
+
+Bash is exempt from the target check: parsing an arbitrary shell command
+string for the paths it touches isn't reliable (quoting, pipes, variable
+expansion), so Bash's actual filesystem access is left to sandbox.filesystem
+instead. This hook only gates whether Bash may run at all via check 1.
 
 allowed-dirs.json separates "directories" from "files" because
 permissions.additionalDirectories rejects non-directory entries; this hook
@@ -40,6 +51,19 @@ def main() -> int:
     tool_name = data.get("tool_name", "")
     cwd = data.get("cwd") or os.getcwd()
     tool_input = data.get("tool_input") or {}
+
+    cwd_real = os.path.realpath(cwd)
+    if not is_allowed(cwd_real):
+        print(
+            f"Blocked: 起動ディレクトリ {cwd_real} は許可ディレクトリ（~/src, ~/share/dotfiles 等）の外にあります",
+            file=sys.stderr,
+        )
+        return 2
+
+    if tool_name == "Bash":
+        # コマンド文字列のパース（引用符・パイプ・変数展開）は信頼できないため、
+        # ファイルアクセスの可否はsandbox.filesystemに委ねる。ここではcwdのみ判定する。
+        return 0
 
     if tool_name in ("Grep", "Glob"):
         target = tool_input.get("path") or cwd
