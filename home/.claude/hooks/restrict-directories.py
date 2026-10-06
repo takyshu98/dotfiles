@@ -4,18 +4,21 @@
 
 Two checks, both against the same allowlist:
 1. The session's cwd must itself be inside the allowlist. This blocks every
-   matched tool, including Bash, whenever Claude Code was launched outside
-   an approved directory.
+   matched tool, including Bash and LSP, whenever Claude Code was launched
+   outside an approved directory.
 2. For file tools (Read/Write/Edit/MultiEdit/NotebookEdit/Grep/Glob), the
    tool's actual target path is resolved and checked too. Unlike
    permissions.blockReadsOutsideWorkingDirectories, this does not trust the
    launch cwd for this check either: it looks at the resolved target
    regardless of where Claude Code was started.
 
-Bash is exempt from the target check: parsing an arbitrary shell command
-string for the paths it touches isn't reliable (quoting, pipes, variable
-expansion), so Bash's actual filesystem access is left to sandbox.filesystem
-instead. This hook only gates whether Bash may run at all via check 1.
+Bash and LSP are exempt from the target check, for different reasons:
+- Bash: parsing an arbitrary shell command string for the paths it touches
+  isn't reliable (quoting, pipes, variable expansion), so its actual
+  filesystem access is left to sandbox.filesystem instead.
+- LSP: its tool_input path field isn't documented/confirmed, so guessing a
+  field name risks a check that looks real but never fires.
+Both still get gated by check 1.
 
 allowed-dirs.json separates "directories" from "files" because
 permissions.additionalDirectories rejects non-directory entries; this hook
@@ -60,9 +63,11 @@ def main() -> int:
         )
         return 2
 
-    if tool_name == "Bash":
-        # コマンド文字列のパース（引用符・パイプ・変数展開）は信頼できないため、
-        # ファイルアクセスの可否はsandbox.filesystemに委ねる。ここではcwdのみ判定する。
+    if tool_name in ("Bash", "LSP"):
+        # Bash: コマンド文字列のパース（引用符・パイプ・変数展開）は信頼できないため、
+        # ファイルアクセスの可否はsandbox.filesystemに委ねる。
+        # LSP: tool_inputのパスフィールド名が未確認のため、誤ったフィールド名で
+        # 判定した気になるより、cwdのみで判定する安全側を選ぶ。
         return 0
 
     if tool_name in ("Grep", "Glob"):

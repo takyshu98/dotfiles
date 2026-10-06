@@ -29,6 +29,12 @@
       "Read(//**/.npmrc)",
       "Read(//**/credentials.json)",
       "Read(//**/credentials)",
+      "Edit(//**/*.pem)",
+      "Edit(//**/*.key)",
+      "Edit(//**/id_rsa*)",
+      "Edit(//**/.netrc)",
+      "Edit(//**/credentials.json)",
+      "Edit(//**/credentials)",
       "Bash(rm -rf:*)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
@@ -110,11 +116,21 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/takyshu98/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash|Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob",
+        "matcher": "Bash|LSP|Read|Write|Edit|MultiEdit|NotebookEdit|Grep|Glob",
         "hooks": [
           {
             "type": "command",
@@ -160,7 +176,8 @@
     "enabled": true,
     "allowUnsandboxedCommands": false,
     "network": {
-      "allowLocalBinding": true
+      "allowLocalBinding": true,
+      "allowUnixSockets": ["~/.config/herdr/herdr.sock"]
     },
     "filesystem": {
       "allowWrite": [
@@ -209,8 +226,7 @@
         "~/.zshenv",
         "~/.mcp.json",
         "~/.mackup.cfg",
-        "~/.claude.json",
-        "~/.claude.json.backup"
+        "~/.claude.json"
       ]
     },
     "excludedCommands": [
