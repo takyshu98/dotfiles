@@ -5,23 +5,15 @@
     "~/.claude",
     "~/.agents",
     "~/.config",
-    "~/.codex",
-    "~/.cursor",
-    "~/.gemini",
     "~/.npm",
     "~/.cache",
     "~/.gradle",
     "~/.local",
-    "~/.android",
-    "~/.docker",
-    "~/.cocoapods",
-    "~/.gem"
+    "~/.docker"
   ],
   "files": [
     "~/.zshenv",
     "~/.mcp.json",
-    "~/.mackup.cfg",
-    "~/.claude.json",
-    "~/.claude.json.backup"
+    "~/.claude.json"
   ]
 }

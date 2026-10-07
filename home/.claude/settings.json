@@ -5,23 +5,10 @@
     "pr": ""
   },
   "permissions": {
-    "allow": [
-      "Bash",
-      "Edit",
-      "Read",
-      "WebFetch",
-      "Write",
-      "mcp__context7",
-      "mcp__chrome-devtools",
-      "mcp__linear-server"
-    ],
     "deny": [
       "Read(//**/.env)",
       "Read(//**/.env.*)",
       "Read(//**/secrets/**)",
-      "Edit(//**/.env)",
-      "Edit(//**/.env.*)",
-      "Edit(//**/secrets/**)",
       "Read(//**/*.pem)",
       "Read(//**/*.key)",
       "Read(//**/id_rsa*)",
@@ -29,22 +16,25 @@
       "Read(//**/.npmrc)",
       "Read(//**/credentials.json)",
       "Read(//**/credentials)",
+      "Edit(//**/.env)",
+      "Edit(//**/.env.*)",
+      "Edit(//**/secrets/**)",
       "Edit(//**/*.pem)",
       "Edit(//**/*.key)",
       "Edit(//**/id_rsa*)",
       "Edit(//**/.netrc)",
       "Edit(//**/credentials.json)",
       "Edit(//**/credentials)",
-      "Bash(rm -rf:*)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git reset --hard:*)",
-      "Bash(sudo:*)",
-      "Bash(ssh:*)",
       "Bash(gh repo delete:*)",
       "Bash(gh repo archive:*)",
       "Bash(gh repo rename:*)",
-      "Bash(gh repo edit --visibility:*)"
+      "Bash(gh repo edit --visibility:*)",
+      "Bash(rm -rf:*)",
+      "Bash(ssh:*)",
+      "Bash(sudo:*)"
     ],
     "ask": [
       "Bash(git commit:*)",
@@ -78,6 +68,16 @@
       "Bash(git stash clear:*)",
       "Bash(git branch -D:*)"
     ],
+    "allow": [
+      "Bash",
+      "Edit",
+      "Read",
+      "WebFetch",
+      "Write",
+      "mcp__context7",
+      "mcp__chrome-devtools",
+      "mcp__linear-server"
+    ],
     "blockReadsOutsideWorkingDirectories": true,
     "additionalDirectories": [
       "~/src",
@@ -85,17 +85,11 @@
       "~/.claude",
       "~/.agents",
       "~/.config",
-      "~/.codex",
-      "~/.cursor",
-      "~/.gemini",
       "~/.npm",
       "~/.cache",
       "~/.gradle",
       "~/.local",
-      "~/.android",
-      "~/.docker",
-      "~/.cocoapods",
-      "~/.gem"
+      "~/.docker"
     ]
   },
   "model": "sonnet",
@@ -178,7 +172,7 @@
     "allowUnsandboxedCommands": false,
     "network": {
       "allowLocalBinding": true,
-      "allowUnixSockets": ["~/.config/herdr/herdr.sock"]
+      "allowUnixSockets": ["~/.config/herdr/herdr.sock"],
       "strictAllowlist": true
     },
     "filesystem": {
@@ -188,22 +182,14 @@
         "~/.claude",
         "~/.agents",
         "~/.config",
-        "~/.codex",
-        "~/.cursor",
-        "~/.gemini",
         "~/.npm",
         "~/.cache",
         "~/.gradle",
         "~/.local",
-        "~/.android",
         "~/.docker",
-        "~/.cocoapods",
-        "~/.gem",
         "~/.zshenv",
         "~/.mcp.json",
-        "~/.mackup.cfg",
-        "~/.claude.json",
-        "~/.claude.json.backup"
+        "~/.claude.json"
       ],
       "denyRead": [
         "~/"
@@ -214,17 +200,11 @@
         "~/.claude",
         "~/.agents",
         "~/.config",
-        "~/.codex",
-        "~/.cursor",
-        "~/.gemini",
         "~/.npm",
         "~/.cache",
         "~/.gradle",
         "~/.local",
-        "~/.android",
         "~/.docker",
-        "~/.cocoapods",
-        "~/.gem",
         "~/.zshenv",
         "~/.mcp.json",
         "~/.mackup.cfg",
