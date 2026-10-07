@@ -102,16 +102,6 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
-            "timeout": 10
-          }
-        ]
-      },
-      {
         "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
@@ -172,7 +162,9 @@
     "allowUnsandboxedCommands": false,
     "network": {
       "allowLocalBinding": true,
-      "allowUnixSockets": ["~/.config/herdr/herdr.sock"],
+      "allowUnixSockets": [
+        "~/.config/herdr/herdr.sock"
+      ],
       "strictAllowlist": true
     },
     "filesystem": {
@@ -187,7 +179,6 @@
         "~/.gradle",
         "~/.local",
         "~/.docker",
-        "~/.zshenv",
         "~/.mcp.json",
         "~/.claude.json"
       ],
@@ -205,9 +196,7 @@
         "~/.gradle",
         "~/.local",
         "~/.docker",
-        "~/.zshenv",
         "~/.mcp.json",
-        "~/.mackup.cfg",
         "~/.claude.json"
       ]
     },

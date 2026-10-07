@@ -7,15 +7,19 @@
 ```
 xcode-select --install
 ```
+
 ```
 bash -c "$(curl -L https://raw.githubusercontent.com/takyshu98/dotfiles/master/install.sh)"
 ```
+
 ```
 mise install
 ```
+
 ```
 herdr integration install claude
 ```
+
 ```
 sudo reboot
 ```
