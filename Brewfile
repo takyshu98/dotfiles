@@ -69,12 +69,12 @@ cask "canva"
 cask "chatgpt"
 cask "claude"
 cask "clipy"
-cask "cmux"
+# cask "cmux"
 cask "codex-app"
 cask "cursor"
 cask "dbeaver-community"
 cask "docker-desktop", args: { appdir: "/Applications" }
-cask "dropbox", args: { appdir: "/Applications" }
+# cask "dropbox", args: { appdir: "/Applications" }
 cask "firefox", args: { appdir: "/Applications" }
 cask "font-hack-nerd-font"  # for starship
 cask "ghostty"
@@ -83,7 +83,7 @@ cask "google-drive"
 cask "google-japanese-ime", args: { appdir: "/Applications" }
 cask "homerow"
 cask "insomnia"
-#cask "intellij-idea-ce"
+# cask "intellij-idea-ce"
 cask "iterm2", args: { appdir: "/Applications" }
 cask "karabiner-elements", args: { appdir: "/Applications" }    # for US keybord language switching
 cask "keycastr"
