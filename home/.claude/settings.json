@@ -16,7 +16,6 @@
       "Read(//**/.npmrc)",
       "Read(//**/credentials.json)",
       "Read(//**/credentials)",
-      "Read(//**/gh/hosts.yml)",
       "Read(//**/.docker/config.json)",
       "Edit(//**/.env)",
       "Edit(//**/.env.*)",
@@ -89,6 +88,7 @@
     "additionalDirectories": [
       "~/src",
       "~/share/dotfiles",
+      "~/.config",
       "~/.claude",
       "~/.agents",
       "~/.cache",
@@ -171,12 +171,20 @@
       "allowUnixSockets": [
         "~/.config/herdr/herdr.sock"
       ],
-      "strictAllowlist": true
+      "strictAllowlist": true,
+      "allowedDomains": [
+        "github.com",
+        "*.github.com",
+        "registry.npmjs.org",
+        "api.cloudflare.com"
+      ],
+      "tlsTerminate": {}
     },
     "filesystem": {
       "allowWrite": [
         "~/src",
         "~/share/dotfiles",
+        "~/.config",
         "~/.claude",
         "~/.agents",
         "~/.cache",
@@ -193,6 +201,7 @@
       "allowRead": [
         "~/src",
         "~/share/dotfiles",
+        "~/.config",
         "~/.claude",
         "~/.agents",
         "~/.cache",
@@ -202,6 +211,20 @@
         "~/.gradle",
         "~/.claude.json",
         "~/.mcp.json"
+      ]
+    },
+    "credentials": {
+      "files": [
+        { "path": "~/.config/.wrangler/config", "mode": "deny" },
+        { "path": "~/.local/state/.zsh_history", "mode": "deny" }
+      ],
+      "envVars": [
+        { "name": "GH_TOKEN", "mode": "mask", "injectHosts": ["api.github.com"] },
+        { "name": "NPM_TOKEN", "mode": "deny" },
+        { "name": "CLOUDFLARE_API_TOKEN", "mode": "mask", "injectHosts": ["api.cloudflare.com"] },
+        { "name": "AWS_ACCESS_KEY_ID", "mode": "deny" },
+        { "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
+        { "name": "AWS_SESSION_TOKEN", "mode": "deny" }
       ]
     },
     "excludedCommands": [
