@@ -4,15 +4,14 @@
     "~/share/dotfiles",
     "~/.claude",
     "~/.agents",
-    "~/.config",
-    "~/.npm",
     "~/.cache",
-    "~/.gradle",
     "~/.local",
-    "~/.docker"
+    "~/.docker",
+    "~/.npm",
+    "~/.gradle"
   ],
   "files": [
-    "~/.mcp.json",
-    "~/.claude.json"
+    "~/.claude.json",
+    "~/.mcp.json"
   ]
 }
