@@ -211,16 +211,43 @@
     },
     "credentials": {
       "files": [
-        { "path": "~/.config/.wrangler/config", "mode": "deny" },
-        { "path": "~/.local/state/.zsh_history", "mode": "deny" }
+        {
+          "path": "~/.config/.wrangler/config",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.local/state/.zsh_history",
+          "mode": "deny"
+        }
       ],
       "envVars": [
-        { "name": "GH_TOKEN", "mode": "mask", "injectHosts": ["api.github.com"] },
-        { "name": "NPM_TOKEN", "mode": "deny" },
-        { "name": "CLOUDFLARE_API_TOKEN", "mode": "deny" },
-        { "name": "AWS_ACCESS_KEY_ID", "mode": "deny" },
-        { "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
-        { "name": "AWS_SESSION_TOKEN", "mode": "deny" }
+        {
+          "name": "GH_TOKEN",
+          "mode": "mask",
+          "injectHosts": [
+            "api.github.com"
+          ]
+        },
+        {
+          "name": "NPM_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "CLOUDFLARE_API_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "mode": "deny"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "mode": "deny"
+        },
+        {
+          "name": "AWS_SESSION_TOKEN",
+          "mode": "deny"
+        }
       ]
     },
     "excludedCommands": [
