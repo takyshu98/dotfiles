@@ -4,6 +4,10 @@
     "commit": "",
     "pr": ""
   },
+  "env": {
+    "CLAUDE_CODE_PLUGIN_DIRS": "/Users/takyshu98/share/dotfiles/home/.claude/mods/gh-token-keychain",
+    "DOCKER_CONTEXT": "orbstack"
+  },
   "permissions": {
     "deny": [
       "Read(//**/.env)",
@@ -160,7 +164,8 @@
     "network": {
       "allowLocalBinding": true,
       "allowUnixSockets": [
-        "~/.config/herdr/herdr.sock"
+        "~/.config/herdr/herdr.sock",
+        "~/.orbstack/run/docker.sock"
       ],
       "strictAllowlist": true,
       "allowedDomains": [

@@ -1,0 +1,5 @@
+{
+  "name": "gh-token-keychain",
+  "version": "0.1.0",
+  "description": "Reads the GitHub token from the macOS Keychain at session start and sets GH_TOKEN for this process."
+}
