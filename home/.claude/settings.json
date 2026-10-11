@@ -42,7 +42,6 @@
       "Read(~/.docker/config.json)",
       "Read(~/.aws/credentials)",
       "Read(~/.config/.wrangler/config/default.toml)",
-      "Read(~/.config/gh/hosts.yml)",
       "Edit(//**/.env)",
       "Edit(//**/.env.*)",
       "Edit(//**/.dev.vars)",
@@ -268,10 +267,6 @@
         },
         {
           "path": "~/.config/.wrangler/config/default.toml",
-          "mode": "deny"
-        },
-        {
-          "path": "~/.config/gh/hosts.yml",
           "mode": "deny"
         }
       ],
