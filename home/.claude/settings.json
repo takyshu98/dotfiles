@@ -39,6 +39,7 @@
       "Read(~/.local/state/.zsh_history)",
       "Read(~/.local/share/uv/credentials/**)",
       "Read(~/.config/uv/uv.toml)",
+      "Read(~/.gradle/gradle.properties)",
       "Read(~/.docker/config.json)",
       "Read(~/.aws/credentials)",
       "Read(~/.config/.wrangler/config/default.toml)",
@@ -61,6 +62,7 @@
       "Edit(~/.local/state/.zsh_history)",
       "Edit(~/.local/share/uv/credentials/**)",
       "Edit(~/.config/uv/uv.toml)",
+      "Edit(~/.gradle/gradle.properties)",
       "Edit(~/.docker/config.json)",
       "Edit(~/.aws/credentials)",
       "Edit(~/.config/.wrangler/config/default.toml)",
@@ -82,6 +84,8 @@
       "Bash(pnpm publish:*)",
       "Bash(uv auth:*)",
       "Bash(uv publish:*)",
+      "Bash(./gradlew publish:*)",
+      "Bash(gradle publish:*)",
       "Bash(docker login:*)",
       "Bash(docker push:*)",
       "Bash(sudo:*)",
@@ -258,6 +262,10 @@
           "mode": "deny"
         },
         {
+          "path": "~/.gradle/gradle.properties",
+          "mode": "deny"
+        },
+        {
           "path": "~/.docker/config.json",
           "mode": "deny"
         },
@@ -308,6 +316,14 @@
         },
         {
           "name": "UV_CREDENTIALS_DIR",
+          "mode": "deny"
+        },
+        {
+          "name": "GRADLE_PUBLISH_KEY",
+          "mode": "deny"
+        },
+        {
+          "name": "GRADLE_PUBLISH_SECRET",
           "mode": "deny"
         },
         {
