@@ -42,6 +42,7 @@
       "Read(~/.docker/config.json)",
       "Read(~/.aws/credentials)",
       "Read(~/.config/.wrangler/config/default.toml)",
+      "Read(~/.config/gh/hosts.yml)",
       "Edit(//**/.env)",
       "Edit(//**/.env.*)",
       "Edit(//**/.dev.vars)",
@@ -122,7 +123,7 @@
       "~/.gradle"
     ]
   },
-  "model": "haiku",
+  "model": "sonnet",
   "enabledMcpjsonServers": [
     "linear-server",
     "context7",
@@ -268,6 +269,10 @@
         {
           "path": "~/.config/.wrangler/config/default.toml",
           "mode": "deny"
+        },
+        {
+          "path": "~/.config/gh/hosts.yml",
+          "mode": "deny"
         }
       ],
       "envVars": [
@@ -279,7 +284,23 @@
           ]
         },
         {
+          "name": "GITHUB_TOKEN",
+          "mode": "deny"
+        },
+        {
           "name": "NPM_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "NODE_AUTH_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "DOCKER_PASSWORD",
+          "mode": "deny"
+        },
+        {
+          "name": "DOCKER_AUTH_CONFIG",
           "mode": "deny"
         },
         {
@@ -299,6 +320,10 @@
           "mode": "deny"
         },
         {
+          "name": "CLOUDFLARE_API_KEY",
+          "mode": "deny"
+        },
+        {
           "name": "AWS_ACCESS_KEY_ID",
           "mode": "deny"
         },
@@ -308,6 +333,14 @@
         },
         {
           "name": "AWS_SESSION_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "AWS_BEARER_TOKEN_BEDROCK",
+          "mode": "deny"
+        },
+        {
+          "name": "AWS_CONTAINER_AUTHORIZATION_TOKEN",
           "mode": "deny"
         }
       ]
