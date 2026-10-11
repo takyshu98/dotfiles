@@ -20,19 +20,51 @@
       "mcp__linear-server"
     ],
     "deny": [
+      "Read(//**/.zsh_history)",
       "Read(//**/.env)",
       "Read(//**/.env.*)",
-      "Read(//**/secrets/**)",
-      "Read(//**/*key*.pem)",
+      "Read(//**/.dev.vars)",
+      "Read(//**/.dev.vars.*)",
+      "Read(//**/*.pem)",
       "Read(//**/*.key)",
+      "Read(//**/*.p12)",
+      "Read(//**/*.pfx)",
+      "Read(//**/*.jks)",
+      "Read(//**/*.keystore)",
+      "Read(//**/*.p8)",
+      "Read(//**/id_rsa*)",
+      "Read(//**/id_ed25519*)",
+      "Read(//**/id_ecdsa*)",
+      "Read(//**/.netrc)",
+      "Read(//**/.git-credentials)",
+      "Read(//**/.npmrc)",
       "Read(//**/.docker/config.json)",
+      "Read(//**/.aws/credentials",
+      "Read(//**/.wrangler/config/**)",
+      "Read(//**/secrets/**)",
+      "Edit(//**/.zsh_history)",
       "Edit(//**/.env)",
       "Edit(//**/.env.*)",
-      "Edit(//**/secrets/**)",
+      "Edit(//**/.dev.vars)",
+      "Edit(//**/.dev.vars.*)",
       "Edit(//**/*.pem)",
       "Edit(//**/*.key)",
+      "Edit(//**/*.p12)",
+      "Edit(//**/*.pfx)",
+      "Edit(//**/*.jks)",
+      "Edit(//**/*.keystore)",
+      "Edit(//**/*.p8)",
+      "Edit(//**/id_rsa*)",
+      "Edit(//**/id_ed25519*)",
+      "Edit(//**/id_ecdsa*)",
+      "Edit(//**/.netrc)",
+      "Edit(//**/.git-credentials)",
+      "Edit(//**/.npmrc)",
       "Edit(//**/gh/hosts.yml)",
       "Edit(//**/.docker/config.json)",
+      "Edit(//**/.aws/credentials",
+      "Edit(//**/.wrangler/config/**)",
+      "Edit(//**/secrets/**)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git reset --hard:*)",
@@ -43,6 +75,7 @@
       "Bash(rm -rf:*)",
       "Bash(ssh:*)",
       "Bash(sudo:*)",
+      "Bash(su:*)",
       "Bash(security:*)"
     ],
     "ask": [
@@ -68,8 +101,6 @@
       "Bash(npm publish:*)",
       "Bash(pnpm add:*)",
       "Bash(pnpm publish:*)",
-      "Bash(bun add:*)",
-      "Bash(bun publish:*)",
       "Bash(pip install:*)",
       "Bash(cargo publish:*)",
       "Bash(cargo install:*)",
@@ -160,15 +191,16 @@
   "sandbox": {
     "enabled": true,
     "failIfUnavailable": true,
+    "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
     "network": {
       "allowedDomains": [
         "github.com",
         "*.github.com",
+        "*.githubusercontent.com",
+        "services.gradle.org",
         "registry.npmjs.org",
-        "api.cloudflare.com",
-        "raw.githubusercontent.com",
-        "services.gradle.org"
+        "api.cloudflare.com"
       ],
       "strictAllowlist": true,
       "allowUnixSockets": [
@@ -213,6 +245,9 @@
     },
     "credentials": {
       "files": [
+        { "path": "~/.docker/config.json",
+          "mode": "deny"
+        },
         {
           "path": "~/.config/.wrangler/config",
           "mode": "deny"
