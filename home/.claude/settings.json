@@ -41,7 +41,7 @@
       "Read(~/.config/uv/uv.toml)",
       "Read(~/.docker/config.json)",
       "Read(~/.aws/credentials)",
-      "Read(~/.config/.wrangler/config)",
+      "Read(~/.config/.wrangler/config/default.toml)",
       "Edit(//**/.env)",
       "Edit(//**/.env.*)",
       "Edit(//**/.dev.vars)",
@@ -63,21 +63,22 @@
       "Edit(~/.config/uv/uv.toml)",
       "Edit(~/.docker/config.json)",
       "Edit(~/.aws/credentials)",
-      "Edit(~/.config/.wrangler/config)",
+      "Edit(~/.config/.wrangler/config/default.toml)",
       "Edit(~/.config/gh/hosts.yml)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git reset --hard:*)",
+      "Bash(gh auth token:*)",
+      "Bash(gh secret:*)",
       "Bash(gh repo delete:*)",
       "Bash(gh repo archive:*)",
       "Bash(gh repo rename:*)",
       "Bash(gh repo edit --visibility:*)",
       "Bash(brew install:*)",
       "Bash(brew uninstall:*)",
-      "Bash(npm login:*)",
       "Bash(npm token:*)",
       "Bash(npm publish:*)",
-      "Bash(pnpm login:*)",
+      "Bash(pnpm token:*)",
       "Bash(pnpm publish:*)",
       "Bash(uv auth:*)",
       "Bash(uv publish:*)",
@@ -87,28 +88,24 @@
       "Bash(su:*)",
       "Bash(ssh:*)",
       "Bash(security:*)",
-      "Bash(rm -rf:*)"
+      "Bash(rm -rf:*)",
+      "Bash(aws:*)",
+      "Bash(cdk:*)"
     ],
     "ask": [
-      "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(git merge:*)",
-      "Bash(git clean:*)",
       "Bash(git restore:*)",
       "Bash(git rebase:*)",
       "Bash(git stash drop:*)",
       "Bash(git stash clear:*)",
       "Bash(git branch -D:*)",
-      "Bash(gh api:*)",
+      "Bash(git clean:*)",
       "Bash(gh auth:*)",
+      "Bash(gh api:*)",
       "Bash(gh pr:*)",
-      "Bash(gh secret:*)",
-      "Bash(gh workflow:*)",
       "Bash(gh release:*)",
+      "Bash(gh workflow:*)",
       "Bash(mise use:*)",
-      "Bash(aws:*)",
-      "Bash(cdk:*)",
-      "Bash(rm:*)",
       "mcp__chrome-devtools"
     ],
     "blockReadsOutsideWorkingDirectories": true,
@@ -249,14 +246,6 @@
     "credentials": {
       "files": [
         {
-          "path": "~/.docker/config.json",
-          "mode": "deny"
-        },
-        {
-          "path": "~/.config/.wrangler/config",
-          "mode": "deny"
-        },
-        {
           "path": "~/.local/state/.zsh_history",
           "mode": "deny"
         },
@@ -266,6 +255,18 @@
         },
         {
           "path": "~/.config/uv/uv.toml",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.docker/config.json",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/.wrangler/config",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/.wrangler/config/default.toml",
           "mode": "deny"
         }
       ],
