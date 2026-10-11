@@ -20,11 +20,12 @@
       "mcp__linear-server"
     ],
     "deny": [
-      "Read(//**/.zsh_history)",
       "Read(//**/.env)",
       "Read(//**/.env.*)",
       "Read(//**/.dev.vars)",
       "Read(//**/.dev.vars.*)",
+      "Read(//**/.npmrc)",
+      "Read(//**/secrets/**)",
       "Read(//**/*.pem)",
       "Read(//**/*.key)",
       "Read(//**/*.p12)",
@@ -32,21 +33,21 @@
       "Read(//**/*.jks)",
       "Read(//**/*.keystore)",
       "Read(//**/*.p8)",
-      "Read(//**/id_rsa*)",
-      "Read(//**/id_ed25519*)",
-      "Read(//**/id_ecdsa*)",
-      "Read(//**/.netrc)",
-      "Read(//**/.git-credentials)",
-      "Read(//**/.npmrc)",
-      "Read(//**/.docker/config.json)",
-      "Read(//**/.aws/credentials",
-      "Read(//**/.wrangler/config/**)",
-      "Read(//**/secrets/**)",
-      "Edit(//**/.zsh_history)",
+      "Read(~/.ssh/**)",
+      "Read(~/.netrc)",
+      "Read(~/.git-credentials)",
+      "Read(~/.local/state/.zsh_history)",
+      "Read(~/.local/share/uv/credentials/**)",
+      "Read(~/.config/uv/uv.toml)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.aws/credentials)",
+      "Read(~/.config/.wrangler/config)",
       "Edit(//**/.env)",
       "Edit(//**/.env.*)",
       "Edit(//**/.dev.vars)",
       "Edit(//**/.dev.vars.*)",
+      "Edit(//**/.npmrc)",
+      "Edit(//**/secrets/**)",
       "Edit(//**/*.pem)",
       "Edit(//**/*.key)",
       "Edit(//**/*.p12)",
@@ -54,17 +55,16 @@
       "Edit(//**/*.jks)",
       "Edit(//**/*.keystore)",
       "Edit(//**/*.p8)",
-      "Edit(//**/id_rsa*)",
-      "Edit(//**/id_ed25519*)",
-      "Edit(//**/id_ecdsa*)",
-      "Edit(//**/.netrc)",
-      "Edit(//**/.git-credentials)",
-      "Edit(//**/.npmrc)",
-      "Edit(//**/gh/hosts.yml)",
-      "Edit(//**/.docker/config.json)",
-      "Edit(//**/.aws/credentials",
-      "Edit(//**/.wrangler/config/**)",
-      "Edit(//**/secrets/**)",
+      "Edit(~/.ssh/**)",
+      "Edit(~/.netrc)",
+      "Edit(~/.git-credentials)",
+      "Edit(~/.local/state/.zsh_history)",
+      "Edit(~/.local/share/uv/credentials/**)",
+      "Edit(~/.config/uv/uv.toml)",
+      "Edit(~/.docker/config.json)",
+      "Edit(~/.aws/credentials)",
+      "Edit(~/.config/.wrangler/config)",
+      "Edit(~/.config/gh/hosts.yml)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git reset --hard:*)",
@@ -72,11 +72,22 @@
       "Bash(gh repo archive:*)",
       "Bash(gh repo rename:*)",
       "Bash(gh repo edit --visibility:*)",
-      "Bash(rm -rf:*)",
-      "Bash(ssh:*)",
+      "Bash(brew install:*)",
+      "Bash(brew uninstall:*)",
+      "Bash(npm login:*)",
+      "Bash(npm token:*)",
+      "Bash(npm publish:*)",
+      "Bash(pnpm login:*)",
+      "Bash(pnpm publish:*)",
+      "Bash(uv auth:*)",
+      "Bash(uv publish:*)",
+      "Bash(docker login:*)",
+      "Bash(docker push:*)",
       "Bash(sudo:*)",
       "Bash(su:*)",
-      "Bash(security:*)"
+      "Bash(ssh:*)",
+      "Bash(security:*)",
+      "Bash(rm -rf:*)"
     ],
     "ask": [
       "Bash(git commit:*)",
@@ -94,19 +105,9 @@
       "Bash(gh secret:*)",
       "Bash(gh workflow:*)",
       "Bash(gh release:*)",
-      "Bash(brew install:*)",
-      "Bash(brew uninstall:*)",
       "Bash(mise use:*)",
-      "Bash(npm install:*)",
-      "Bash(npm publish:*)",
-      "Bash(pnpm add:*)",
-      "Bash(pnpm publish:*)",
-      "Bash(pip install:*)",
-      "Bash(cargo publish:*)",
-      "Bash(cargo install:*)",
       "Bash(aws:*)",
       "Bash(cdk:*)",
-      "Bash(docker push:*)",
       "Bash(rm:*)",
       "mcp__chrome-devtools"
     ],
@@ -124,7 +125,7 @@
       "~/.gradle"
     ]
   },
-  "model": "claude-sonnet-5",
+  "model": "haiku",
   "enabledMcpjsonServers": [
     "linear-server",
     "context7",
@@ -200,6 +201,8 @@
         "*.githubusercontent.com",
         "services.gradle.org",
         "registry.npmjs.org",
+        "pypi.org",
+        "files.pythonhosted.org",
         "api.cloudflare.com"
       ],
       "strictAllowlist": true,
@@ -245,7 +248,8 @@
     },
     "credentials": {
       "files": [
-        { "path": "~/.docker/config.json",
+        {
+          "path": "~/.docker/config.json",
           "mode": "deny"
         },
         {
@@ -254,6 +258,14 @@
         },
         {
           "path": "~/.local/state/.zsh_history",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.local/share/uv/credentials",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/uv/uv.toml",
           "mode": "deny"
         }
       ],
@@ -267,6 +279,18 @@
         },
         {
           "name": "NPM_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "UV_PUBLISH_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "UV_PUBLISH_PASSWORD",
+          "mode": "deny"
+        },
+        {
+          "name": "UV_CREDENTIALS_DIR",
           "mode": "deny"
         },
         {
