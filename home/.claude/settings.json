@@ -1,8 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "/Users/takyshu98/share/dotfiles/home/.claude/mods/gh-token-keychain",
-    "DOCKER_CONTEXT": "orbstack"
+    "CLAUDE_CODE_PLUGIN_DIRS": "/Users/takyshu98/share/dotfiles/home/.claude/mods/gh-token-keychain:/Users/takyshu98/share/dotfiles/home/.claude/mods/cloudflare-token-keychain",
+    "DOCKER_CONTEXT": "orbstack",
+    "WRANGLER_SEND_METRICS": "false"
   },
   "attribution": {
     "commit": "",
@@ -110,6 +111,20 @@
       "Bash(gh release:*)",
       "Bash(gh workflow:*)",
       "Bash(mise use:*)",
+      "Bash(wrangler deploy:*)",
+      "Bash(wrangler versions:*)",
+      "Bash(wrangler secret:*)",
+      "Bash(wrangler delete:*)",
+      "Bash(wrangler d1:*)",
+      "Bash(wrangler r2:*)",
+      "Bash(wrangler kv:*)",
+      "Bash(npx wrangler deploy:*)",
+      "Bash(npx wrangler versions:*)",
+      "Bash(npx wrangler secret:*)",
+      "Bash(npx wrangler delete:*)",
+      "Bash(npx wrangler d1:*)",
+      "Bash(npx wrangler r2:*)",
+      "Bash(npx wrangler kv:*)",
       "mcp__chrome-devtools"
     ],
     "blockReadsOutsideWorkingDirectories": true,
@@ -323,7 +338,10 @@
         },
         {
           "name": "CLOUDFLARE_API_TOKEN",
-          "mode": "deny"
+          "mode": "mask",
+          "injectHosts": [
+            "api.cloudflare.com"
+          ]
         },
         {
           "name": "CLOUDFLARE_API_KEY",
