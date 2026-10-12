@@ -57,13 +57,17 @@ ln -fvns "${DOTHOME}/.claude/hooks/restrict-directories.py" "${HOME}/.claude/hoo
 # single source of truth. Re-run this script after editing allowed-dirs.json
 # to regenerate settings.json; review with `git diff` before committing.
 #
-# additionalDirectories rejects non-directory entries (it warns at startup and
-# drops them), so it gets .directories only, while the sandbox takes both.
+# The lists in allowed-dirs.json are split by purpose:
+#   tools        - directories the built-in tools (Read/Edit/Write/Grep/Glob)
+#                  may touch directly; also checked by restrict-directories.py
+#   sandboxExtra - directories only sandboxed Bash needs (tool caches/state)
+#   files        - single files (additionalDirectories rejects non-directories)
+# additionalDirectories gets .tools only; the sandbox gets all three.
 DIRS_FILE="${DOTHOME}/.claude/allowed-dirs.json"
 SETTINGS_FILE="${DOTHOME}/.claude/settings.json"
 jq --slurpfile dirs "${DIRS_FILE}" '
-  ($dirs[0].directories + $dirs[0].files) as $all
-  | .permissions.additionalDirectories = $dirs[0].directories
+  ($dirs[0].tools + $dirs[0].sandboxExtra + $dirs[0].files) as $all
+  | .permissions.additionalDirectories = $dirs[0].tools
   | .sandbox.filesystem.allowRead = $all
   | .sandbox.filesystem.allowWrite = $all
 ' "${SETTINGS_FILE}" > "${SETTINGS_FILE}.tmp" && mv "${SETTINGS_FILE}.tmp" "${SETTINGS_FILE}"

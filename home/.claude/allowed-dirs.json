@@ -1,10 +1,12 @@
 {
-  "directories": [
+  "tools": [
     "~/src",
     "~/share/dotfiles",
     "~/.config",
     "~/.claude",
-    "~/.agents",
+    "~/.agents"
+  ],
+  "sandboxExtra": [
     "~/.cache",
     "~/.local",
     "~/.docker",

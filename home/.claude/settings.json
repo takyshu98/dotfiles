@@ -118,12 +118,7 @@
       "~/share/dotfiles",
       "~/.config",
       "~/.claude",
-      "~/.agents",
-      "~/.cache",
-      "~/.local",
-      "~/.docker",
-      "~/.npm",
-      "~/.gradle"
+      "~/.agents"
     ]
   },
   "model": "sonnet",

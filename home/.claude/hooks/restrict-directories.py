@@ -20,9 +20,11 @@ Bash and LSP are exempt from the target check, for different reasons:
   field name risks a check that looks real but never fires.
 Both still get gated by check 1.
 
-allowed-dirs.json separates "directories" from "files" because
-permissions.additionalDirectories rejects non-directory entries; this hook
-and the sandbox accept both.
+allowed-dirs.json is split by purpose: this hook checks "tools" (directories
+the built-in tools may touch) plus "files" (single files, since
+permissions.additionalDirectories rejects non-directory entries). "sandboxExtra"
+(tool caches/state that only sandboxed Bash needs) is deliberately not
+checked here.
 """
 import json
 import os
@@ -33,7 +35,7 @@ with open(ALLOWED_DIRS_FILE) as f:
     _allowed = json.load(f)
 ALLOWED_ABS = [
     os.path.realpath(os.path.expanduser(p))
-    for p in _allowed["directories"] + _allowed["files"]
+    for p in _allowed["tools"] + _allowed["files"]
 ]
 
 PATH_FIELD_BY_TOOL = {
