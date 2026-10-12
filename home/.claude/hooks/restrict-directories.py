@@ -31,12 +31,6 @@ import os
 import sys
 
 ALLOWED_DIRS_FILE = os.path.expanduser("~/.claude/allowed-dirs.json")
-with open(ALLOWED_DIRS_FILE) as f:
-    _allowed = json.load(f)
-ALLOWED_ABS = [
-    os.path.realpath(os.path.expanduser(p))
-    for p in _allowed["tools"] + _allowed["files"]
-]
 
 PATH_FIELD_BY_TOOL = {
     "Read": "file_path",
@@ -47,18 +41,28 @@ PATH_FIELD_BY_TOOL = {
 }
 
 
-def is_allowed(target: str) -> bool:
-    return any(target == base or target.startswith(base + os.sep) for base in ALLOWED_ABS)
+def load_allowed() -> list[str]:
+    with open(ALLOWED_DIRS_FILE) as f:
+        allowed = json.load(f)
+    return [
+        os.path.realpath(os.path.expanduser(p))
+        for p in allowed["tools"] + allowed["files"]
+    ]
+
+
+def is_allowed(target: str, allowed_abs: list[str]) -> bool:
+    return any(target == base or target.startswith(base + os.sep) for base in allowed_abs)
 
 
 def main() -> int:
+    allowed_abs = load_allowed()
     data = json.load(sys.stdin)
     tool_name = data.get("tool_name", "")
     cwd = data.get("cwd") or os.getcwd()
     tool_input = data.get("tool_input") or {}
 
     cwd_real = os.path.realpath(cwd)
-    if not is_allowed(cwd_real):
+    if not is_allowed(cwd_real, allowed_abs):
         print(
             f"Blocked: 起動ディレクトリ {cwd_real} は許可ディレクトリ（~/src, ~/share/dotfiles 等）の外にあります",
             file=sys.stderr,
@@ -86,7 +90,7 @@ def main() -> int:
         target = os.path.join(cwd, target)
     target = os.path.realpath(target)
 
-    if not is_allowed(target):
+    if not is_allowed(target, allowed_abs):
         print(
             f"Blocked: {target} は許可ディレクトリ（~/src, ~/share/dotfiles 等）の外にあります",
             file=sys.stderr,
@@ -96,4 +100,15 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # PreToolUse hooks fail open on any exit code other than 2 (an uncaught
+    # exception exits 1, which only shows a non-blocking error). Turn every
+    # unexpected failure, e.g. a missing key in allowed-dirs.json or
+    # malformed stdin, into a block instead.
+    try:
+        sys.exit(main())
+    except Exception as e:
+        print(
+            f"Blocked: restrict-directories.py の内部エラーのため拒否します ({type(e).__name__}: {e})",
+            file=sys.stderr,
+        )
+        sys.exit(2)
