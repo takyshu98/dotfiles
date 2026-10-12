@@ -17,6 +17,8 @@
       "Write",
       "WebFetch(domain:code.claude.com)",
       "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:platform.claude.com)",
+      "WebFetch(domain:developers.cloudflare.com)",
       "mcp__context7",
       "mcp__linear-server"
     ],
