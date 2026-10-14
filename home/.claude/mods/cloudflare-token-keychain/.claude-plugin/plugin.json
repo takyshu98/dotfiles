@@ -1,0 +1,5 @@
+{
+  "name": "cloudflare-token-keychain",
+  "version": "0.1.0",
+  "description": "Reads the Cloudflare API token from the macOS Keychain at session start and sets CLOUDFLARE_API_TOKEN for this process."
+}
