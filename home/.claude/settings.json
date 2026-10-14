@@ -385,6 +385,5 @@
       "node \"/Users/takyshu98/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs\" *"
     ]
   },
-  "plansDirectory": "./plans",
-  "agentPushNotifEnabled": true
+  "plansDirectory": "./plans"
 }
