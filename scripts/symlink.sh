@@ -50,7 +50,8 @@ find "${DOTHOME}/.claude/skills" -mindepth 1 -maxdepth 1 -type d -exec ln -fvns 
 # herdr-agent-state.sh) that live directly in the real directory are left
 # untouched.
 mkdir -pv "${HOME}/.claude/hooks"
-ln -fvns "${DOTHOME}/.claude/hooks/restrict-directories.py" "${HOME}/.claude/hooks/restrict-directories.py"
+ln -fvns "${DOTHOME}/.claude/hooks/restrict-cwd.py" "${HOME}/.claude/hooks/restrict-cwd.py"
+ln -fvns "${DOTHOME}/.claude/hooks/restrict-write-path.py" "${HOME}/.claude/hooks/restrict-write-path.py"
 
 # permissions.additionalDirectories and sandbox.filesystem.allowRead/allowWrite
 # in settings.json are generated from allowed-dirs.json so the allowlist has a
@@ -59,7 +60,7 @@ ln -fvns "${DOTHOME}/.claude/hooks/restrict-directories.py" "${HOME}/.claude/hoo
 #
 # The lists in allowed-dirs.json are split by purpose:
 #   tools        - directories the built-in tools (Read/Edit/Write/Grep/Glob)
-#                  may touch directly; also checked by restrict-directories.py
+#                  may touch directly; also checked by restrict-cwd.py and restrict-write-path.py
 #   sandboxExtra - directories only sandboxed Bash needs (tool caches/state)
 #   files        - single files (additionalDirectories rejects non-directories)
 # additionalDirectories gets .tools only; the sandbox gets all three.
